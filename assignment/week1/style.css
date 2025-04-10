@@ -294,3 +294,30 @@ article:hover {
   background-color: rgb(0, 123, 238);
   cursor: pointer;
 }
+
+#wish .flexbox {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  gap: 30px;
+}
+
+.banner {
+  display: flex;
+  animation: scroll-left 40s linear infinite;
+  width: max-content;
+}
+
+.banner img {
+  width: 200px;
+  white-space: nowrap;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
