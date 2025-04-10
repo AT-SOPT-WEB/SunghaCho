@@ -9,6 +9,8 @@
 
 body {
   background-color: black;
+  background-image: url("images/background.png");
+  background-position: bottom left;
 }
 
 header {
@@ -37,7 +39,7 @@ header {
 
 nav {
   position: fixed;
-  margin: 90px 0px 0px 40px;
+  margin: 100px 0px 0px 40px;
   width: 170px;
   height: 200px;
   border: 1px solid rgb(216, 216, 216);
@@ -98,7 +100,9 @@ section {
   scroll-margin-top: 80px;
 }
 
-.grid1 {
+#home {
+  border: none;
+  background-color: transparent;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: auto auto auto;
@@ -112,7 +116,7 @@ section {
 
 .item {
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: cover;
 }
 
@@ -132,7 +136,7 @@ section {
   grid-area: item5;
 }
 
-.grid2 {
+.grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 15px;
@@ -142,6 +146,11 @@ section {
 
 .category {
   height: 35px;
+}
+
+article:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px 0 rgba(62, 62, 62, 0.8);
 }
 
 #daily article {
@@ -154,42 +163,11 @@ section {
   padding: 15px 0;
 }
 
-article:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 8px 20px 0 rgba(62, 62, 62, 0.8);
-}
-
-#music article {
-  width: 200px;
-  height: 270px;
-  background: linear-gradient(45deg, #9c9b9b, #4a4a4a);
-  color: white;
-  border-radius: 20px;
-  justify-items: center;
-  padding: 25px 24px;
-}
-
-#project article {
-  width: 200px;
-  height: 160px;
-  background: linear-gradient(to right, #535353, #292929);
-  color: white;
-  border-radius: 10px;
-  justify-items: center;
-  overflow: hidden;
-}
-
 #daily .photobox {
   width: 100%;
   height: 150px;
   overflow: hidden;
   margin-top: 10px;
-}
-
-#project .photobox {
-  width: 100%;
-  height: 110px;
-  overflow: hidden;
 }
 
 .photo {
@@ -198,35 +176,11 @@ article:hover {
   object-fit: cover;
 }
 
-.album {
-  width: 160px;
-  height: 160px;
-  border-radius: 5px;
-}
-
 #daily .flexbox {
   display: flex;
   justify-content: space-around;
   width: 100%;
   font-size: 15px;
-}
-
-#music .flexbox {
-  display: flex;
-  margin-top: 5px;
-  height: 30px;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
-
-#project .flexbox {
-  display: flex;
-  justify-content: space-between;
-  height: 50px;
-  align-items: center;
-  width: 100%;
-  padding: 0px 12px;
 }
 
 #daily .content {
@@ -242,25 +196,6 @@ article:hover {
 #daily .content :nth-child(2) {
   font-size: 10px;
   margin: 4px 0px;
-}
-
-#music .content {
-  display: flex;
-  flex-direction: column;
-  margin-top: 5px;
-  font-size: 15px;
-}
-
-#music .content :nth-child(2) {
-  font-size: 13px;
-  color: #c9c9c9;
-}
-
-#project .content {
-  display: flex;
-  font-size: 13px;
-  gap: 5px;
-  align-items: center;
 }
 
 .dropbtn {
@@ -280,6 +215,43 @@ article:hover {
 
 .dropbtn + .dropbtn {
   border-left: 1px solid rgb(184, 184, 184);
+}
+
+#music article {
+  width: 200px;
+  height: 270px;
+  background: linear-gradient(45deg, #9c9b9b, #4a4a4a);
+  color: white;
+  border-radius: 20px;
+  justify-items: center;
+  padding: 25px 24px;
+}
+
+.album {
+  width: 160px;
+  height: 160px;
+  border-radius: 5px;
+}
+
+#music .flexbox {
+  display: flex;
+  margin-top: 5px;
+  height: 30px;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+#music .content {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+  font-size: 15px;
+}
+
+#music .content :nth-child(2) {
+  font-size: 13px;
+  color: #c9c9c9;
 }
 
 .likebtn {
@@ -310,6 +282,38 @@ article:hover {
 .player {
   margin-top: 15px;
   width: 150px;
+}
+
+#project article {
+  width: 200px;
+  height: 160px;
+  background: linear-gradient(to right, #535353, #292929);
+  color: white;
+  border-radius: 10px;
+  justify-items: center;
+  overflow: hidden;
+}
+
+#project .photobox {
+  width: 100%;
+  height: 110px;
+  overflow: hidden;
+}
+
+#project .flexbox {
+  display: flex;
+  justify-content: space-between;
+  height: 50px;
+  align-items: center;
+  width: 100%;
+  padding: 0px 12px;
+}
+
+#project .content {
+  display: flex;
+  font-size: 13px;
+  gap: 5px;
+  align-items: center;
 }
 
 .logomark {
