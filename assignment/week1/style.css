@@ -37,10 +37,47 @@ header {
 
 nav {
   position: fixed;
-  margin-top: 100px;
-  width: 150px;
-  height: 400px;
-  background-color: rgb(57, 57, 57);
+  margin: 90px 0px 0px 40px;
+  width: 170px;
+  height: 200px;
+  border: 1px solid rgb(216, 216, 216);
+  border-radius: 10px;
+  background: #bbbcbf;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+nav a {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  justify-items: center;
+  padding: 0px 15px;
+  border-top: 1px solid grey;
+  text-decoration: none;
+  color: rgb(8, 8, 8);
+}
+
+nav a:hover {
+  background: #adadae;
+}
+
+nav a:first-child {
+  border-top: none;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+nav a:last-child {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+nav img {
+  width: 15px;
 }
 
 main {
@@ -58,6 +95,7 @@ section {
   border: 1px solid white;
   border-radius: 20px;
   padding: 15px 20px 30px 20px;
+  scroll-margin-top: 80px;
 }
 
 .grid1 {
