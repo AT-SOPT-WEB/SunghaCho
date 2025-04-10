@@ -40,7 +40,7 @@ header {
 nav {
   position: fixed;
   margin: 100px 0px 0px 40px;
-  width: 170px;
+  width: 182px;
   height: 200px;
   border: 1px solid rgb(216, 216, 216);
   border-radius: 10px;
@@ -83,9 +83,8 @@ nav img {
 }
 
 main {
-  padding-left: 150px;
-  padding-top: 70px;
-  padding: 90px 0 0 170px;
+  margin-left: 200px;
+  padding: 90px 0 0 0px;
   justify-items: center;
 }
 
@@ -103,6 +102,7 @@ section {
 #home {
   border: none;
   background-color: transparent;
+  width: 87%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: auto auto auto;
