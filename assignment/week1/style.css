@@ -104,8 +104,8 @@ section {
   background-color: transparent;
   width: 87%;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: auto auto auto;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, auto);
   gap: 10px;
 
   grid-template-areas:
