@@ -56,7 +56,6 @@ nav a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  justify-items: center;
   padding: 0px 15px;
   border-top: 1px solid grey;
   text-decoration: none;
