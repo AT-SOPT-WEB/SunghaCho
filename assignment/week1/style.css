@@ -14,7 +14,7 @@ body {
 }
 
 header {
-  border: 0.0625rem solid rgb(69, 69, 69);
+  border: 0.0625rem solid #454545;
   background-color: black;
   color: white;
   display: flex;
@@ -42,7 +42,7 @@ nav {
   margin: 6.25rem 0rem 0rem 2.5rem;
   width: 11.375rem;
   height: 12.5rem;
-  border: 0.0625rem solid rgb(216, 216, 216);
+  border: 0.0625rem solid #d8d8d8;
   border-radius: 0.625rem;
   background: #bbbcbf;
   display: flex;
@@ -59,7 +59,7 @@ nav a {
   padding: 0rem 0.9375rem;
   border-top: 0.0625rem solid grey;
   text-decoration: none;
-  color: rgb(8, 8, 8);
+  color: #080808;
 }
 
 nav a:hover {
@@ -88,7 +88,7 @@ main {
 }
 
 section {
-  background-color: rgb(57, 57, 57);
+  background-color: #393939;
   width: 85%;
   color: white;
   margin-bottom: 2.5rem;
@@ -139,7 +139,7 @@ section {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr));
   gap: 0.9375rem;
-  background-color: rgb(57, 57, 57);
+  background-color: #393939;
   justify-items: center;
 }
 
@@ -199,7 +199,7 @@ article:hover {
 }
 
 .dropbtn {
-  color: rgb(0, 123, 238);
+  color: #007bee;
   background-color: transparent;
   width: 100%;
   text-align: center;
@@ -213,11 +213,11 @@ article:hover {
 }
 
 .dropbtn:hover {
-  color: rgb(50, 50, 50);
+  color: #323232;
 }
 
 .dropbtn + .dropbtn {
-  border-left: 0.0625rem solid rgb(184, 184, 184);
+  border-left: 0.0625rem solid #b8b8b8;
 }
 
 #music article {
@@ -328,7 +328,7 @@ article:hover {
   width: 2.6875rem;
   height: 1.5625rem;
   border-radius: 0.9375rem;
-  color: rgb(0, 123, 238);
+  color: #007bee;
   border: none;
   background-color: rgba(241, 241, 241, 0.649);
   font-weight: 600;
@@ -336,7 +336,7 @@ article:hover {
 
 #project button:hover {
   color: white;
-  background-color: rgb(0, 123, 238);
+  background-color: #007bee;
   cursor: pointer;
 }
 
@@ -373,6 +373,6 @@ footer {
   margin-top: 6.25rem;
   text-align: center;
   color: #6a6a6a;
-  background-color: rgb(24, 24, 24);
+  background-color: #181818;
   padding-top: 1.875rem;
 }
