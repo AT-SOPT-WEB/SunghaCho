@@ -73,8 +73,7 @@ nav a:first-child {
 }
 
 nav a:last-child {
-  border-bottom-left-radius: 0.625rem;
-  border-bottom-right-radius: 0.625rem;
+  border-radius: 0 0.625rem;
 }
 
 nav img {
