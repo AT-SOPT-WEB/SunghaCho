@@ -40,7 +40,7 @@ header {
 nav {
   position: fixed;
   margin: 6.25rem 0rem 0rem 2.5rem;
-  width: 11.375rem;
+  width: 12.5rem;
   height: 12.5rem;
   border: 0.0625rem solid #d8d8d8;
   border-radius: 0.625rem;
@@ -85,6 +85,27 @@ main {
   margin-left: 12.5rem;
   padding: 5.625rem 0 0 0rem;
   justify-items: center;
+}
+
+@media (max-width: 1024px) {
+  main {
+    margin-left: 8rem;
+  }
+  nav {
+    width: 8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  main {
+    margin-left: 10rem;
+  }
+}
+
+@media (max-width: 480px) {
+  main {
+    margin-left: 12rem;
+  }
 }
 
 section {
