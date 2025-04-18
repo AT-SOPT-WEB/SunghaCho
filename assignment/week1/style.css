@@ -1,0 +1,399 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Pretendard Variable", Pretendard, sans-serif;
+}
+
+body {
+  background-color: black;
+  background-image: url("images/background.png");
+  background-position: bottom left;
+}
+
+header {
+  border: 0.0625rem solid #454545;
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1;
+  position: fixed;
+  width: 100%;
+  padding: 0 1.25rem;
+  height: 4.375rem;
+}
+
+header h1 {
+  font-size: 1.25rem;
+  font-weight: normal;
+}
+
+#logo {
+  width: 2.5rem;
+}
+
+#menu {
+  width: 1.875rem;
+  height: 1.875rem;
+}
+
+nav {
+  position: fixed;
+  margin: 6.25rem 0rem 0rem 2.5rem;
+  width: 12.5rem;
+  height: 12.5rem;
+  border: 0.0625rem solid #d8d8d8;
+  border-radius: 0.625rem;
+  background: #bbbcbf;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+nav a {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0rem 0.9375rem;
+  border-top: 0.0625rem solid grey;
+  text-decoration: none;
+  color: #080808;
+}
+
+nav a:hover {
+  background: #adadae;
+}
+
+nav a:first-child {
+  border-top: none;
+  border-top-left-radius: 0.625rem;
+  border-top-right-radius: 0.625rem;
+}
+
+nav a:last-child {
+  border-radius: 0 0.625rem;
+}
+
+nav img {
+  width: 0.9375rem;
+}
+
+main {
+  margin-left: 12.5rem;
+  padding: 5.625rem 0 0 0rem;
+  justify-items: center;
+}
+
+@media (max-width: 1024px) {
+  main {
+    margin-left: 8rem;
+  }
+  nav {
+    width: 8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  main {
+    margin-left: 10rem;
+  }
+}
+
+@media (max-width: 480px) {
+  main {
+    margin-left: 12rem;
+  }
+}
+
+section {
+  background-color: #393939;
+  width: 85%;
+  color: white;
+  margin-bottom: 2.5rem;
+  border: 0.0625rem solid white;
+  border-radius: 1.25rem;
+  padding: 0.9375rem 1.25rem 1.875rem 1.25rem;
+  scroll-margin-top: 5rem;
+}
+
+#home {
+  border: none;
+  background-color: transparent;
+  width: 87%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, auto);
+  gap: 0.625rem;
+
+  grid-template-areas:
+    "item1 item1 item3 item3"
+    "item2 item2 item3 item3"
+    "item4 item4 item4 item5";
+}
+
+.item {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.item1 {
+  grid-area: item1;
+}
+.item2 {
+  grid-area: item2;
+}
+.item3 {
+  grid-area: item3;
+}
+.item4 {
+  grid-area: item4;
+}
+.item5 {
+  grid-area: item5;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr));
+  gap: 0.9375rem;
+  background-color: #393939;
+  justify-items: center;
+}
+
+.category {
+  height: 2.1875rem;
+  font-weight: normal;
+  font-size: 1rem;
+}
+
+article:hover {
+  transform: translateY(-0.625rem);
+  box-shadow: 0 0.5rem 1.25rem 0 rgba(62, 62, 62, 0.8);
+}
+
+#daily article {
+  width: 12.5rem;
+  height: 15.625rem;
+  background: linear-gradient(45deg, #f1f1f1f2, #bebebe);
+  color: white;
+  border-radius: 0.625rem;
+  overflow: hidden;
+  justify-items: center;
+  padding: 0.9375rem 0;
+}
+
+#daily .photobox {
+  width: 100%;
+  height: 9.375rem;
+  overflow: hidden;
+  margin-top: 0.625rem;
+}
+
+.photo {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+#daily .flexbox {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  font-size: 0.9375rem;
+}
+
+#daily .content {
+  justify-items: center;
+  text-align: center;
+  color: black;
+}
+
+#daily .content :first-child {
+  font-weight: bold;
+}
+
+#daily .content :nth-child(2) {
+  font-size: 0.625rem;
+  margin: 0.25rem 0rem;
+}
+
+.dropbtn {
+  color: #007bee;
+  background-color: transparent;
+  width: 100%;
+  text-align: center;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  font-size: 0.875rem;
+}
+
+.dropbtn:hover {
+  color: #323232;
+}
+
+.dropbtn + .dropbtn {
+  border-left: 0.0625rem solid #b8b8b8;
+}
+
+#music article {
+  width: 12.5rem;
+  height: 16.875rem;
+  background: linear-gradient(45deg, #9c9b9b, #4a4a4a);
+  color: white;
+  border-radius: 1.25rem;
+  justify-items: center;
+  padding: 1.5625rem 1.5rem;
+}
+
+.album {
+  width: 10rem;
+  height: 10rem;
+  border-radius: 0.3125rem;
+}
+
+#music .flexbox {
+  display: flex;
+  margin-top: 0.3125rem;
+  height: 1.875rem;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+#music .content {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.3125rem;
+  font-size: 0.9375rem;
+}
+
+#music .content :nth-child(2) {
+  font-size: 0.8125rem;
+  color: #c9c9c9;
+}
+
+.likebtn {
+  width: 1.125rem;
+  height: 1.125rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.hearthover {
+  display: none;
+}
+
+.likebtn:hover .heart {
+  display: none;
+}
+
+.likebtn:hover .hearthover {
+  display: block;
+}
+
+.player {
+  margin-top: 0.9375rem;
+  width: 9.375rem;
+}
+
+#project article {
+  width: 12.5rem;
+  height: 10rem;
+  background: linear-gradient(to right, #535353, #292929);
+  color: white;
+  border-radius: 0.625rem;
+  justify-items: center;
+  overflow: hidden;
+}
+
+#project .photobox {
+  width: 100%;
+  height: 6.875rem;
+  overflow: hidden;
+}
+
+#project .flexbox {
+  display: flex;
+  justify-content: space-between;
+  height: 3.125rem;
+  align-items: center;
+  width: 100%;
+  padding: 0rem 0.75rem;
+}
+
+#project .content {
+  display: flex;
+  font-size: 0.8125rem;
+  gap: 0.3125rem;
+  align-items: center;
+}
+
+.logomark {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+#project button {
+  width: 2.6875rem;
+  height: 1.5625rem;
+  border-radius: 0.9375rem;
+  color: #007bee;
+  border: none;
+  background-color: rgba(241, 241, 241, 0.649);
+  font-weight: 600;
+}
+
+#project button:hover {
+  color: white;
+  background-color: #007bee;
+  cursor: pointer;
+}
+
+#wish .flexbox {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  gap: 1.875rem;
+}
+
+.banner {
+  display: flex;
+  animation: scroll-left 40s linear infinite;
+  width: max-content;
+}
+
+.banner img {
+  width: 12.5rem;
+  white-space: nowrap;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+footer {
+  width: 100%;
+  height: 6.25rem;
+  margin-top: 6.25rem;
+  text-align: center;
+  color: #6a6a6a;
+  background-color: #181818;
+  padding-top: 1.875rem;
+}
