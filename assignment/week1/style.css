@@ -279,27 +279,22 @@ article:hover {
 
 .likebtn {
   width: 1.125rem;
-  cursor: pointer;
-  position: relative;
+  height: 1.125rem;
   background: none;
   border: none;
   cursor: pointer;
 }
 
-.heart {
-  position: absolute;
-}
-
 .hearthover {
-  opacity: 0;
+  display: none;
 }
 
 .likebtn:hover .heart {
-  opacity: 0;
+  display: none;
 }
 
 .likebtn:hover .hearthover {
-  opacity: 1;
+  display: block;
 }
 
 .player {
