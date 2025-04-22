@@ -3,13 +3,13 @@ import { todos } from "./todoData.js";
 const filterAll = document.querySelector(".filter-all");
 const filterCompleted = document.querySelector(".filter-completed");
 const filterIncompleted = document.querySelector(".filter-incompleted");
-
 const input = document.querySelector(".todo-input");
 const selectDrop = document.getElementById("select-drop");
 const addBtn = document.querySelector(".add-btn");
 const deleteBtn = document.querySelector(".delete-btn");
 const completeBtn = document.querySelector(".complete-btn");
 const todoList = document.querySelector(".todo-list");
+const checkAll = document.querySelector(".check-all");
 const tbody = document.querySelector("tbody");
 
 if (!localStorage.getItem("todos")) {
@@ -87,4 +87,23 @@ addBtn.addEventListener("click", () => {
 
   input.value = "";
   selectDrop.value = "";
+});
+
+checkAll.addEventListener("change", () => {
+  const checkBoxes = document.querySelectorAll("tbody input[type='checkbox']");
+  checkBoxes.forEach((checkbox) => {
+    checkbox.checked = checkAll.checked;
+  });
+});
+
+tbody.addEventListener("change", (event) => {
+  const checkBoxes = document.querySelectorAll("tbody input[type='checkbox']");
+  let allChecked = true;
+
+  checkBoxes.forEach((checkbox) => {
+    if (!checkbox.checked) {
+      allChecked = false;
+    }
+  });
+  checkAll.checked = allChecked;
 });
