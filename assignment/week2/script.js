@@ -45,7 +45,13 @@ addBtn.addEventListener("click", () => {
   const title = input.value;
   const priority = selectDrop.value;
 
-  if (!title || !priority) return;
+  if (!title) {
+    alert("할 일을 입력해주세요.");
+    return;
+  } else if (!priority) {
+    alert("중요도를 선택해주세요.");
+    return;
+  }
 
   const newTodo = {
     id: todoData.length + 1,
