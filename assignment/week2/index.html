@@ -7,52 +7,57 @@
     <title>Todo</title>
   </head>
   <body>
-    <div class="modal">
+    <header>
+      <h1>Task To do</h1>
+    </header>
+    <main>
+      <section class="filter-section">
+        <button class="filter-all">전체</button>
+        <button class="filter-completed">완료됨</button>
+        <button class="filter-incompleted">미완료</button>
+        <select class="filter-priority" name="options">
+          <option value="" selected hidden>중요도</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+      </section>
+      <section class="add-section">
+        <input class="todo-input" placeholder="할 일을 입력하세요" />
+        <select class="select-priority" name="options">
+          <option value="" selected hidden>중요도 선택</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+        <button class="add-btn">추가</button>
+      </section>
+      <section>
+        <button class="delete-btn">삭제</button>
+        <button class="complete-btn">완료</button>
+      </section>
+      <section class="todo-table">
+        <table>
+          <thead>
+            <tr>
+              <th>
+                <input type="checkbox" class="check-all" />
+              </th>
+              <th>중요도</th>
+              <th>완료됨</th>
+              <th>할 일</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+    </main>
+    <aside class="modal">
       <div class="modal-popup">
         <p>이미 완료된 todo입니다.</p>
         <button type="button" class="close-btn">닫기</button>
       </div>
-    </div>
-    <div class="filter-section">
-      <button class="filter-all">전체</button>
-      <button class="filter-completed">완료됨</button>
-      <button class="filter-incompleted">미완료</button>
-      <select class="filter-priority" name="options">
-        <option value="" selected hidden>중요도</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-      </select>
-    </div>
-    <div class="add-section">
-      <input class="todo-input" placeholder="할 일을 입력하세요" />
-      <select class="select-priority" name="options">
-        <option value="" selected hidden>중요도 선택</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-      </select>
-      <button class="add-btn">추가</button>
-    </div>
-    <div>
-      <button class="delete-btn">삭제</button>
-      <button class="complete-btn">완료</button>
-    </div>
-    <div class="todo-table">
-      <table>
-        <thead>
-          <tr>
-            <th>
-              <input type="checkbox" class="check-all" />
-            </th>
-            <th>중요도</th>
-            <th>완료됨</th>
-            <th>할 일</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-    </div>
+    </aside>
     <script type="module" src="script.js"></script>
   </body>
 </html>
