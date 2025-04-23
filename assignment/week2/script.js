@@ -6,13 +6,12 @@ const modalClose = document.querySelector(".close-btn");
 const filterAll = document.querySelector(".filter-all");
 const filterCompleted = document.querySelector(".filter-completed");
 const filterIncompleted = document.querySelector(".filter-incompleted");
-const filterPriority = document.querySelector("#filter-priority");
+const filterPriority = document.querySelector(".filter-priority");
 const input = document.querySelector(".todo-input");
-const selectDrop = document.getElementById("select-drop");
+const selectDrop = document.querySelector(".select-priority");
 const addBtn = document.querySelector(".add-btn");
 const deleteBtn = document.querySelector(".delete-btn");
 const completeBtn = document.querySelector(".complete-btn");
-const todoList = document.querySelector(".todo-list");
 const checkAll = document.querySelector(".check-all");
 const tbody = document.querySelector("tbody");
 
