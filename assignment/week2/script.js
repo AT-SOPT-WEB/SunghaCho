@@ -6,6 +6,7 @@ const modalClose = document.querySelector(".close-btn");
 const filterAll = document.querySelector(".filter-all");
 const filterCompleted = document.querySelector(".filter-completed");
 const filterIncompleted = document.querySelector(".filter-incompleted");
+const filterPriority = document.querySelector("#filter-priority");
 const input = document.querySelector(".todo-input");
 const selectDrop = document.getElementById("select-drop");
 const addBtn = document.querySelector(".add-btn");
@@ -160,4 +161,45 @@ completeBtn.addEventListener("click", () => {
 
 modalClose.addEventListener("click", () => {
   modal.style.display = "none";
+});
+
+const filterTodo = (filteredData) => {
+  tbody.innerHTML = filteredData
+    .map((todo) => {
+      return `
+            <tr data-id="${todo.id}">
+              <td><input type="checkbox"></td>
+              <td>${todo.priority}</td>
+              <td>${todo.completed}</td>
+              <td>${todo.title}</td>
+            </tr>
+          `;
+    })
+    .join("");
+};
+
+filterAll.addEventListener("click", () => {
+  filterTodo(todoData);
+});
+
+filterCompleted.addEventListener("click", () => {
+  const filtered = todoData.filter((todo) => todo.completed === true);
+  filterTodo(filtered);
+});
+
+filterIncompleted.addEventListener("click", () => {
+  const filtered = todoData.filter((todo) => todo.completed === false);
+  filterTodo(filtered);
+});
+
+filterPriority.addEventListener("click", () => {
+  const selectedValue = filterPriority.value;
+  if (!selectedValue) return;
+
+  const selectedPriority = Number(selectedValue);
+  const filtered = todoData.filter(
+    (todo) => todo.priority === selectedPriority
+  );
+
+  filterTodo(filtered);
 });
