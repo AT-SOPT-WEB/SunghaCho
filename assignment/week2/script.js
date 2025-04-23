@@ -19,6 +19,7 @@ let todoData = JSON.parse(localStorage.getItem("todos")) || [];
 
 todoData.forEach((todo) => {
   const tr = document.createElement("tr");
+  tr.dataset.id = todo.id;
 
   const tdCheck = document.createElement("td");
   const checkbox = document.createElement("input");
@@ -61,6 +62,7 @@ addBtn.addEventListener("click", () => {
   };
 
   const tr = document.createElement("tr");
+  tr.dataset.id = newTodo.id;
 
   const tdCheck = document.createElement("td");
   const checkbox = document.createElement("input");
@@ -106,4 +108,19 @@ tbody.addEventListener("change", (event) => {
     }
   });
   checkAll.checked = allChecked;
+});
+
+deleteBtn.addEventListener("click", () => {
+  const checkedBoxes = document.querySelectorAll(
+    "tbody input[type='checkbox']:checked"
+  );
+
+  checkedBoxes.forEach((checkbox) => {
+    const tr = checkbox.closest("tr");
+    const todoId = tr.dataset.id;
+    todoData = todoData.filter((todo) => Number(todo.id) !== Number(todoId));
+    tr.remove();
+  });
+
+  localStorage.setItem("todos", JSON.stringify(todoData));
 });
