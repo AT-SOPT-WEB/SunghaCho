@@ -123,6 +123,7 @@ deleteBtn.addEventListener("click", () => {
   });
 
   localStorage.setItem("todos", JSON.stringify(todoData));
+  checkAll.checked = false;
 });
 
 completeBtn.addEventListener("click", () => {
@@ -141,7 +142,9 @@ completeBtn.addEventListener("click", () => {
 
     const completedTd = tr.querySelector("td:nth-child(3)");
     completedTd.textContent = "true";
+    checkbox.checked = false;
   });
 
   localStorage.setItem("todos", JSON.stringify(todoData));
+  checkAll.checked = false;
 });
