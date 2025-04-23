@@ -1,5 +1,8 @@
 import { todos } from "./todoData.js";
 
+const modal = document.querySelector(".modal");
+const modalClose = document.querySelector(".close-btn");
+
 const filterAll = document.querySelector(".filter-all");
 const filterCompleted = document.querySelector(".filter-completed");
 const filterIncompleted = document.querySelector(".filter-incompleted");
@@ -138,6 +141,12 @@ completeBtn.addEventListener("click", () => {
     const completedTodo = todoData.find(
       (todo) => Number(todo.id) === Number(todoId)
     );
+
+    if (completedTodo.completed == true) {
+      modal.style.display = "block";
+      return;
+    }
+
     completedTodo.completed = true;
 
     const completedTd = tr.querySelector("td:nth-child(3)");
@@ -147,4 +156,8 @@ completeBtn.addEventListener("click", () => {
 
   localStorage.setItem("todos", JSON.stringify(todoData));
   checkAll.checked = false;
+});
+
+modalClose.addEventListener("click", () => {
+  modal.style.display = "none";
 });
