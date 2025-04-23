@@ -124,3 +124,24 @@ deleteBtn.addEventListener("click", () => {
 
   localStorage.setItem("todos", JSON.stringify(todoData));
 });
+
+completeBtn.addEventListener("click", () => {
+  const checkedBoxes = document.querySelectorAll(
+    "tbody input[type='checkbox']:checked"
+  );
+
+  checkedBoxes.forEach((checkbox) => {
+    const tr = checkbox.closest("tr");
+    const todoId = tr.dataset.id;
+
+    const completedTodo = todoData.find(
+      (todo) => Number(todo.id) === Number(todoId)
+    );
+    completedTodo.completed = true;
+
+    const completedTd = tr.querySelector("td:nth-child(3)");
+    completedTd.textContent = "true";
+  });
+
+  localStorage.setItem("todos", JSON.stringify(todoData));
+});
