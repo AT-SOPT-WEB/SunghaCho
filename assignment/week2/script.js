@@ -24,7 +24,7 @@ if (!localStorage.getItem("todos")) {
 }
 let todoData = JSON.parse(localStorage.getItem("todos")) || [];
 
-todoData.forEach((todo) => {
+function createTodoRow(todo) {
   const tr = document.createElement("tr");
   tr.dataset.id = todo.id;
   tr.draggable = true;
@@ -40,18 +40,18 @@ todoData.forEach((todo) => {
   tr.appendChild(tdPriority);
 
   const tdCompleted = document.createElement("td");
-  if (todo.completed == true) {
-    tdCompleted.textContent = "Done";
-  } else {
-    tdCompleted.textContent = "-";
-  }
-
+  tdCompleted.textContent = todo.completed ? "Done" : "-";
   tr.appendChild(tdCompleted);
 
   const tdTitle = document.createElement("td");
   tdTitle.textContent = todo.title;
   tr.appendChild(tdTitle);
 
+  return tr;
+}
+
+todoData.forEach((todo) => {
+  const tr = createTodoRow(todo);
   tbody.appendChild(tr);
 });
 
@@ -69,33 +69,12 @@ addBtn.addEventListener("click", () => {
 
   const newTodo = {
     id: todoData.length + 1,
-    title: title,
+    title,
     completed: false,
     priority: Number(priority),
   };
 
-  const tr = document.createElement("tr");
-  tr.dataset.id = newTodo.id;
-  tr.draggable = true;
-
-  const tdCheck = document.createElement("td");
-  const checkbox = document.createElement("input");
-  checkbox.type = "checkbox";
-  tdCheck.appendChild(checkbox);
-  tr.appendChild(tdCheck);
-
-  const tdPriority = document.createElement("td");
-  tdPriority.textContent = priority;
-  tr.appendChild(tdPriority);
-
-  const tdCompleted = document.createElement("td");
-  tdCompleted.textContent = "-";
-  tr.appendChild(tdCompleted);
-
-  const tdTitle = document.createElement("td");
-  tdTitle.textContent = title;
-  tr.appendChild(tdTitle);
-
+  const tr = createTodoRow(newTodo);
   tbody.appendChild(tr);
 
   todoData.push(newTodo);
