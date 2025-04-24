@@ -239,3 +239,8 @@ tbody.addEventListener("drop", () => {
   );
   localStorage.setItem("todos", JSON.stringify(todoData));
 });
+
+tbody.addEventListener("dragend", () => {
+  dropLine.remove();
+  if (dragged) dragged.classList.remove("dragging");
+});
