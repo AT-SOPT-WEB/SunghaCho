@@ -23,6 +23,7 @@ let todoData = JSON.parse(localStorage.getItem("todos")) || [];
 todoData.forEach((todo) => {
   const tr = document.createElement("tr");
   tr.dataset.id = todo.id;
+  tr.draggable = true;
 
   const tdCheck = document.createElement("td");
   const checkbox = document.createElement("input");
@@ -66,6 +67,7 @@ addBtn.addEventListener("click", () => {
 
   const tr = document.createElement("tr");
   tr.dataset.id = newTodo.id;
+  tr.draggable = true;
 
   const tdCheck = document.createElement("td");
   const checkbox = document.createElement("input");
@@ -166,7 +168,7 @@ const filterTodo = (filteredData) => {
   tbody.innerHTML = filteredData
     .map((todo) => {
       return `
-            <tr data-id="${todo.id}">
+            <tr data-id="${todo.id}" draggable="true">
               <td><input type="checkbox"></td>
               <td>${todo.priority}</td>
               <td>${todo.completed}</td>
@@ -201,4 +203,39 @@ filterPriority.addEventListener("click", () => {
   );
 
   filterTodo(filtered);
+});
+
+let dragged = null;
+const dropLine = document.createElement("tr");
+dropLine.innerHTML = '<td colspan="100%" id="drop-line"></td>';
+
+tbody.addEventListener("dragstart", (e) => {
+  dragged = e.target;
+  e.target.classList.add("dragging");
+});
+
+tbody.addEventListener("dragover", (e) => {
+  e.preventDefault();
+  const target = e.target.closest("tr");
+  const rect = target.getBoundingClientRect();
+  const offset = e.clientY - rect.top;
+  const insertAfter = offset > rect.height / 2;
+
+  if (insertAfter) {
+    tbody.insertBefore(dropLine, target.nextSibling);
+  } else {
+    tbody.insertBefore(dropLine, target);
+  }
+});
+
+tbody.addEventListener("drop", () => {
+  tbody.insertBefore(dragged, dropLine);
+  dropLine.remove();
+
+  const order = [...tbody.querySelectorAll("tr")].map((tr) => tr.dataset.id);
+
+  todoData = order.map((id) =>
+    todoData.find((todo) => todo.id.toString() === id)
+  );
+  localStorage.setItem("todos", JSON.stringify(todoData));
 });
