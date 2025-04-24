@@ -2,7 +2,6 @@ import { todos } from "./todoData.js";
 
 const modal = document.querySelector(".modal");
 const modalClose = document.querySelector(".close-btn");
-
 const filterAll = document.querySelector(".filter-all");
 const filterCompleted = document.querySelector(".filter-completed");
 const filterIncompleted = document.querySelector(".filter-incompleted");
@@ -81,7 +80,7 @@ addBtn.addEventListener("click", () => {
   localStorage.setItem("todos", JSON.stringify(todoData));
 
   input.value = "";
-  selectDrop.value = "";
+  resetDropdowns();
 });
 
 checkAll.addEventListener("change", () => {
@@ -170,16 +169,19 @@ const filterTodo = (filteredData) => {
 
 filterAll.addEventListener("click", () => {
   filterTodo(todoData);
+  resetDropdowns();
 });
 
 filterCompleted.addEventListener("click", () => {
   const filtered = todoData.filter((todo) => todo.completed === true);
   filterTodo(filtered);
+  resetDropdowns();
 });
 
 filterIncompleted.addEventListener("click", () => {
   const filtered = todoData.filter((todo) => todo.completed === false);
   filterTodo(filtered);
+  resetDropdowns();
 });
 
 filterCustom.addEventListener("click", (e) => {
@@ -293,3 +295,18 @@ addOptionLi.forEach((item) => {
 document.addEventListener("click", () => {
   addCustom.classList.remove("open");
 });
+
+function resetDropdowns() {
+  if (filterOption) {
+    filterOption.textContent = "중요도 선택";
+    filterOption.removeAttribute("data-value");
+  }
+
+  if (addOption) {
+    addOption.textContent = "중요도 선택";
+    addOption.removeAttribute("data-value");
+  }
+
+  filterCustom.classList.remove("open");
+  addCustom.classList.remove("open");
+}
