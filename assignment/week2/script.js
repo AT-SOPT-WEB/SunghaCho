@@ -2,27 +2,32 @@ import { todos } from "./todoData.js";
 
 const modal = document.querySelector(".modal");
 const modalClose = document.querySelector(".close-btn");
+
 const filterAll = document.querySelector(".filter-all");
 const filterCompleted = document.querySelector(".filter-completed");
 const filterIncompleted = document.querySelector(".filter-incompleted");
 const filterCustom = document.querySelector(".filter-custom");
 const filterOption = filterCustom.querySelector(".filter-option");
 const filterOptionLi = filterCustom.querySelectorAll(".filter-option-list li");
+
 const input = document.querySelector(".todo-input");
 const addCustom = document.querySelector(".add-custom");
 const addOption = addCustom.querySelector(".add-option");
 const addOptionLi = addCustom.querySelectorAll(".add-option-list li");
+
 const addBtn = document.querySelector(".add-btn");
 const deleteBtn = document.querySelector(".delete-btn");
 const completeBtn = document.querySelector(".complete-btn");
 const checkAll = document.querySelector(".check-all");
 const tbody = document.querySelector("tbody");
 
+// localStorage에서 todo 불러오기
 if (!localStorage.getItem("todos")) {
   localStorage.setItem("todos", JSON.stringify(todos));
 }
 let todoData = JSON.parse(localStorage.getItem("todos")) || [];
 
+// To-Do row 생성 함수수
 function createTodoRow(todo) {
   const tr = document.createElement("tr");
   tr.dataset.id = todo.id;
@@ -49,11 +54,13 @@ function createTodoRow(todo) {
   return tr;
 }
 
+// todo 데이터 출력
 todoData.forEach((todo) => {
   const tr = createTodoRow(todo);
   tbody.appendChild(tr);
 });
 
+// 새로운 Todo 생성 및 추가
 addBtn.addEventListener("click", () => {
   const title = input.value;
   const priority = addOption.getAttribute("data-value");
@@ -83,6 +90,7 @@ addBtn.addEventListener("click", () => {
   resetDropdowns();
 });
 
+// 전체 선택/해제 기능
 checkAll.addEventListener("change", () => {
   const checkBoxes = document.querySelectorAll("tbody input[type='checkbox']");
   checkBoxes.forEach((checkbox) => {
@@ -102,6 +110,7 @@ tbody.addEventListener("change", (event) => {
   checkAll.checked = allChecked;
 });
 
+// 선택 항목 삭제
 deleteBtn.addEventListener("click", () => {
   const checkedBoxes = document.querySelectorAll(
     "tbody input[type='checkbox']:checked"
@@ -118,6 +127,7 @@ deleteBtn.addEventListener("click", () => {
   checkAll.checked = false;
 });
 
+// 선택 항목 완료 처리 및 모달
 completeBtn.addEventListener("click", () => {
   const checkedBoxes = document.querySelectorAll(
     "tbody input[type='checkbox']:checked"
@@ -151,6 +161,7 @@ modalClose.addEventListener("click", () => {
   modal.style.display = "none";
 });
 
+// 필터링 기능
 const filterTodo = (filteredData) => {
   tbody.innerHTML = filteredData
     .map((todo) => {
@@ -198,6 +209,7 @@ filterCustom.addEventListener("click", (e) => {
   filterTodo(filtered);
 });
 
+// 드래그 앤 드롭 기능
 let dragged = null;
 const dropLine = document.createElement("tr");
 dropLine.innerHTML = '<td colspan="100%" id="drop-line"></td>';
@@ -245,6 +257,7 @@ if (filterCustom) {
   });
 }
 
+// 커스텀 드롭다운 옵션 처리
 filterOptionLi.forEach((item) => {
   item.addEventListener("click", (e) => {
     e.stopPropagation();
