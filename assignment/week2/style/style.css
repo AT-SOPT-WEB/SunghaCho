@@ -1,6 +1,8 @@
 body {
   height: 100vh;
-  justify-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: linear-gradient(to bottom, #ffffff, #bababa);
 }
 
@@ -24,7 +26,7 @@ p {
   width: 100%;
   margin-left: 15px;
   font-size: 1.2rem;
-  color: #9b9b9b;
+  color: #323232e7;
   font-weight: bold;
 }
 
@@ -80,7 +82,7 @@ main {
   justify-content: center;
   align-items: center;
   width: 40px;
-  height: 100%;
+  height: 40px;
   border: none;
   border-radius: 15px;
   font-size: 12px;
@@ -91,28 +93,6 @@ main {
 
 .add-btn img {
   width: 12px;
-}
-
-.custom-select select {
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-
-  height: 100%;
-  padding-left: 10px;
-  padding-right: 18px;
-  border: none;
-  outline: none;
-  border-radius: 30px;
-  font-size: 12px;
-  background-color: #434343;
-  color: #c8c8c8;
-  cursor: pointer;
-
-  background-image: url("../assets/ic-drop.svg");
-  background-repeat: no-repeat;
-  background-position: 88% center;
-  background-size: 6px;
 }
 
 .todo-table {
@@ -149,7 +129,7 @@ h1 {
   font-size: 1.4rem;
   color: #ffffff;
   font-weight: bold;
-  color: #9b9b9b;
+  color: #323232e7;
 }
 
 .delete-btn,
@@ -190,10 +170,10 @@ table td {
 
 .modal {
   display: none;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   overflow: hidden;
   background: hsla(0, 0%, 37%, 0.502);
@@ -212,7 +192,7 @@ table td {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: #dddddde0;
+  background: #ebebebe0;
   border-radius: 20px;
   overflow: hidden;
 }
@@ -220,7 +200,7 @@ table td {
 .modal-popup p {
   font-size: 16px;
   font-weight: 400;
-  color: #383838;
+  color: #2b2b2b;
 }
 
 .close-btn {
@@ -233,4 +213,59 @@ table td {
   color: #007dea;
   cursor: pointer;
   transition: box-shadow 0.2s;
+}
+
+.filter-custom {
+  width: 16%;
+  height: 36px;
+  cursor: pointer;
+}
+
+.add-custom {
+  width: 21%;
+  height: 40px;
+  cursor: pointer;
+}
+
+.selected-option {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  font-size: 12px;
+  background-color: #434343;
+  color: #c8c8c8;
+  cursor: pointer;
+}
+
+.selected-option img {
+  width: 8px;
+  margin-left: 5px;
+}
+
+.option-list {
+  display: none;
+  position: absolute;
+  background: hsla(0, 1%, 69%, 0.931);
+  margin-top: 5px;
+  margin-left: 5px;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 60px;
+  text-align: center;
+  font-size: 12px;
+}
+
+.option-list li {
+  padding: 10px 0;
+}
+
+.option-list li:hover {
+  background: hsla(0, 0%, 37%, 0.502);
+}
+
+.custom-select.open .option-list {
+  display: block;
 }

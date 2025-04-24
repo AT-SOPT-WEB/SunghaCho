@@ -6,9 +6,13 @@ const modalClose = document.querySelector(".close-btn");
 const filterAll = document.querySelector(".filter-all");
 const filterCompleted = document.querySelector(".filter-completed");
 const filterIncompleted = document.querySelector(".filter-incompleted");
-const filterPriority = document.querySelector(".filter-priority");
+const filterCustom = document.querySelector(".filter-custom");
+const filterOption = filterCustom.querySelector(".filter-option");
+const filterOptionLi = filterCustom.querySelectorAll(".filter-option-list li");
 const input = document.querySelector(".todo-input");
-const selectDrop = document.querySelector(".select-priority");
+const addCustom = document.querySelector(".add-custom");
+const addOption = addCustom.querySelector(".add-option");
+const addOptionLi = addCustom.querySelectorAll(".add-option-list li");
 const addBtn = document.querySelector(".add-btn");
 const deleteBtn = document.querySelector(".delete-btn");
 const completeBtn = document.querySelector(".complete-btn");
@@ -53,7 +57,7 @@ todoData.forEach((todo) => {
 
 addBtn.addEventListener("click", () => {
   const title = input.value;
-  const priority = selectDrop.value;
+  const priority = addOption.getAttribute("data-value");
 
   if (!title) {
     alert("할 일을 입력해주세요.");
@@ -199,8 +203,10 @@ filterIncompleted.addEventListener("click", () => {
   filterTodo(filtered);
 });
 
-filterPriority.addEventListener("click", () => {
-  const selectedValue = filterPriority.value;
+filterCustom.addEventListener("click", (e) => {
+  e.stopPropagation();
+  const selectedValue = filterOption.getAttribute("data-value");
+  console.log(selectedValue);
   if (!selectedValue) return;
 
   const selectedPriority = Number(selectedValue);
@@ -249,4 +255,62 @@ tbody.addEventListener("drop", () => {
 tbody.addEventListener("dragend", () => {
   dropLine.remove();
   if (dragged) dragged.classList.remove("dragging");
+});
+
+if (filterCustom) {
+  filterCustom.addEventListener("click", (e) => {
+    e.stopPropagation();
+    filterCustom.classList.toggle("open");
+  });
+}
+
+filterOptionLi.forEach((item) => {
+  item.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const value = item.getAttribute("data-value");
+    const text = item.textContent;
+
+    if (filterOption) {
+      filterOption.textContent = text;
+      filterOption.setAttribute("data-value", value);
+    }
+
+    filterCustom.classList.remove("open");
+
+    const selectedValue = filterOption.getAttribute("data-value");
+    if (!selectedValue) return;
+
+    const selectedPriority = Number(selectedValue);
+    const filtered = todoData.filter(
+      (todo) => todo.priority === selectedPriority
+    );
+
+    filterTodo(filtered);
+  });
+});
+
+if (addCustom) {
+  addCustom.addEventListener("click", (e) => {
+    e.stopPropagation();
+    addCustom.classList.toggle("open");
+  });
+}
+
+addOptionLi.forEach((item) => {
+  item.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const value = item.getAttribute("data-value");
+    const text = item.textContent;
+
+    if (addOption) {
+      addOption.textContent = text;
+      addOption.setAttribute("data-value", value);
+    }
+
+    addCustom.classList.remove("open");
+  });
+});
+
+document.addEventListener("click", () => {
+  addCustom.classList.remove("open");
 });
