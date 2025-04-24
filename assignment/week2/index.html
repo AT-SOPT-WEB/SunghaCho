@@ -3,55 +3,69 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./style/style.css" />
+    <link rel="stylesheet" href="./style/reset.css" />
     <title>Todo</title>
   </head>
   <body>
-    <header>
-      <h1>Task To do</h1>
-    </header>
-    <main>
-      <section class="filter-section">
-        <button class="filter-all">전체</button>
-        <button class="filter-completed">완료됨</button>
-        <button class="filter-incompleted">미완료</button>
-        <select class="filter-priority" name="options">
-          <option value="" selected hidden>중요도</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-        </select>
-      </section>
-      <section class="add-section">
-        <input class="todo-input" placeholder="할 일을 입력하세요" />
-        <select class="select-priority" name="options">
-          <option value="" selected hidden>중요도 선택</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-        </select>
-        <button class="add-btn">추가</button>
-      </section>
-      <section>
-        <button class="delete-btn">삭제</button>
-        <button class="complete-btn">완료</button>
-      </section>
-      <section class="todo-table">
-        <table>
-          <thead>
-            <tr>
-              <th>
-                <input type="checkbox" class="check-all" />
-              </th>
-              <th>중요도</th>
-              <th>완료됨</th>
-              <th>할 일</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </section>
-    </main>
+    <div class="container">
+      <header>
+        <p>Filter</p>
+        <section class="filter-section">
+          <button class="filter-all">
+            <img src="./assets/ic-asterisk.svg" alt="애스터리스크 아이콘" /> All
+          </button>
+          <button class="filter-completed">
+            <img src="./assets/ic-sun.svg" alt="태양 아이콘" />Done
+          </button>
+          <button class="filter-incompleted">
+            <img src="./assets/ic-moon.svg" alt="달 아이콘" />Incompleted
+          </button>
+          <select class="filter-priority" name="options">
+            <option value="" selected hidden>중요도</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </section>
+      </header>
+      <main>
+        <section class="add-section">
+          <input class="todo-input" placeholder="할 일을 입력하세요" />
+          <select class="select-priority" name="options">
+            <option value="" selected hidden>중요도 선택</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+          <button class="add-btn">
+            <img src="./assets/ic-add.svg" alt="추가 아이콘" />
+          </button>
+        </section>
+        <section class="status-section">
+          <h1>Task To do</h1>
+          <div class="btn-container">
+            <button class="delete-btn">삭제</button>
+            <button class="complete-btn">완료</button>
+          </div>
+        </section>
+        <section class="todo-table">
+          <table>
+            <thead>
+              <tr>
+                <th>
+                  <input type="checkbox" class="check-all" />
+                </th>
+                <th>중요도</th>
+                <th>상태</th>
+                <th>할 일</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </section>
+      </main>
+    </div>
     <aside class="modal">
       <div class="modal-popup">
         <p>이미 완료된 todo입니다.</p>

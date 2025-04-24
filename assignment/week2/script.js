@@ -36,7 +36,12 @@ todoData.forEach((todo) => {
   tr.appendChild(tdPriority);
 
   const tdCompleted = document.createElement("td");
-  tdCompleted.textContent = todo.completed;
+  if (todo.completed == true) {
+    tdCompleted.textContent = "Done";
+  } else {
+    tdCompleted.textContent = "-";
+  }
+
   tr.appendChild(tdCompleted);
 
   const tdTitle = document.createElement("td");
@@ -80,7 +85,7 @@ addBtn.addEventListener("click", () => {
   tr.appendChild(tdPriority);
 
   const tdCompleted = document.createElement("td");
-  tdCompleted.textContent = "false";
+  tdCompleted.textContent = "-";
   tr.appendChild(tdCompleted);
 
   const tdTitle = document.createElement("td");
@@ -152,7 +157,7 @@ completeBtn.addEventListener("click", () => {
     completedTodo.completed = true;
 
     const completedTd = tr.querySelector("td:nth-child(3)");
-    completedTd.textContent = "true";
+    completedTd.textContent = "Done";
     checkbox.checked = false;
   });
 
@@ -167,11 +172,12 @@ modalClose.addEventListener("click", () => {
 const filterTodo = (filteredData) => {
   tbody.innerHTML = filteredData
     .map((todo) => {
+      const status = todo.completed ? "Done" : "-";
       return `
             <tr data-id="${todo.id}" draggable="true">
               <td><input type="checkbox"></td>
               <td>${todo.priority}</td>
-              <td>${todo.completed}</td>
+              <td>${status}</td>
               <td>${todo.title}</td>
             </tr>
           `;
