@@ -313,12 +313,18 @@ document.addEventListener("click", () => {
 
 function resetDropdowns() {
   if (filterOption) {
-    filterOption.textContent = "중요도 선택";
+    filterOption.innerHTML = `
+    중요도
+    <img src="./assets/ic-drop.svg" alt="드롭다운 아이콘" />
+  `;
     filterOption.removeAttribute("data-value");
   }
 
   if (addOption) {
-    addOption.textContent = "중요도 선택";
+    addOption.innerHTML = `
+  중요도 선택
+  <img src="./assets/ic-drop.svg" alt="드롭다운 아이콘" />
+`;
     addOption.removeAttribute("data-value");
   }
 
