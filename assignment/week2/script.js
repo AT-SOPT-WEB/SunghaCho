@@ -267,7 +267,7 @@ filterOptionLi.forEach((item) => {
     const text = item.textContent;
 
     if (filterOption) {
-      filterOption.textContent = text;
+      filterOption.innerHTML = `${text} <img src="./assets/ic-drop.svg" alt="드롭다운 아이콘" />`;
       filterOption.setAttribute("data-value", value);
     }
 
@@ -299,7 +299,7 @@ addOptionLi.forEach((item) => {
     const text = item.textContent;
 
     if (addOption) {
-      addOption.textContent = text;
+      addOption.innerHTML = `${text} <img src="./assets/ic-drop.svg" alt="드롭다운 아이콘" />`;
       addOption.setAttribute("data-value", value);
     }
 
