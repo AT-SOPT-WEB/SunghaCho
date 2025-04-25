@@ -73,8 +73,10 @@ addBtn.addEventListener("click", () => {
     return;
   }
 
+  const maxId = todoData.reduce((max, todo) => Math.max(max, todo.id), 0);
+
   const newTodo = {
-    id: todoData.length + 1,
+    id: maxId + 1,
     title,
     completed: false,
     priority: Number(priority),
