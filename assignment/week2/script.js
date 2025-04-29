@@ -135,6 +135,19 @@ completeBtn.addEventListener("click", () => {
     "tbody input[type='checkbox']:checked"
   );
 
+  if (
+    Array.from(checkedBoxes).some(
+      (checkbox) =>
+        todoData.find(
+          (todo) =>
+            Number(todo.id) === Number(checkbox.closest("tr").dataset.id)
+        )?.completed
+    )
+  ) {
+    modal.style.display = "block";
+    return;
+  }
+
   checkedBoxes.forEach((checkbox) => {
     const tr = checkbox.closest("tr");
     const todoId = tr.dataset.id;
