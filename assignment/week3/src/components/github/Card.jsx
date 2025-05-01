@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const Card = ({ profile }) => {
+const Card = ({ profile, onClose }) => {
   const [userInfo, setUserInfo] = useState({ status: "idle", data: null });
 
   // 사용자 정보를 가져오는 함수예요.
@@ -10,7 +10,11 @@ const Card = ({ profile }) => {
   const getUserInfo = async (user) => {
     setUserInfo({ status: "pending", data: null });
     try {
-      const response = await fetch(`https://api.github.com/users/${user}`);
+      const response = await fetch(`https://api.github.com/users/${user}`, {
+        headers: {
+          Authorization: `token ${import.meta.env.VITE_GITHUB_TOKEN}`,
+        },
+      });
       if (!response.ok) throw new Error("Network response was not ok");
       const data = await response.json();
       setUserInfo({ status: "resolved", data });
@@ -48,6 +52,7 @@ const Card = ({ profile }) => {
 
   return (
     <div>
+      <button onClick={onClose}>x</button>
       {/* 기본과제에서 userInfo.status는 'resolved' 상태일 때만 아래와 같이 고려하면 됩니다. */}
       {/* 조건부 렌더링을 통해 resolved 상태 즉, 검색 결과 데이터가 있는 경우에 결과를 표시하는겁니다. */}
       {userInfo.status === "resolved" && (
