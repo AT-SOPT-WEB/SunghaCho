@@ -23,7 +23,7 @@ const Game = () => {
 
   console.log(secretNum);
 
-  function checkAnswer(input, secretNum) {
+  const checkAnswer = (input, secretNum) => {
     const inputNum = input.split("").map(Number);
 
     let strike = 0;
@@ -38,7 +38,7 @@ const Game = () => {
     }
 
     return { strike, ball };
-  }
+  };
 
   const [inputValue, setInputValue] = useState(null);
   const [isValid, setIsValid] = useState(true);
