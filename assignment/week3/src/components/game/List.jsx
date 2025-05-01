@@ -1,14 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
-const List = ({ inputValue, result }) => {
-  const [history, setHistory] = useState([]);
-
-  useEffect(() => {
-    if (inputValue && result) {
-      setHistory((prev) => [...prev, { inputValue, ...result }]);
-    }
-  }, [inputValue, result]);
-
+const List = ({ history }) => {
+  if (!history) return;
   return (
     <>
       {history.map((item, idx) => (

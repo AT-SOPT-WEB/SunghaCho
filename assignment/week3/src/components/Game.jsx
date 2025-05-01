@@ -6,7 +6,7 @@ import List from "./game/List";
 const Game = () => {
   const [secretNum, setSecretNum] = useState([]);
 
-  useEffect(() => {
+  const createSecretNum = () => {
     const numList = [];
     while (numList.length < 3) {
       const rand = Math.floor(Math.random() * 10);
@@ -14,8 +14,11 @@ const Game = () => {
         numList.push(rand);
       }
     }
+    return numList;
+  };
 
-    setSecretNum(numList);
+  useEffect(() => {
+    setSecretNum(createSecretNum());
   }, []);
 
   console.log(secretNum);
@@ -39,6 +42,7 @@ const Game = () => {
 
   const [inputValue, setInputValue] = useState(null);
   const [isValid, setIsValid] = useState(true);
+  const [history, setHistory] = useState([]);
 
   const handleInputSubmit = (value, valid) => {
     if (valid) {
@@ -54,11 +58,25 @@ const Game = () => {
       ? checkAnswer(inputValue, secretNum)
       : "";
 
+  useEffect(() => {
+    if (result == "") return;
+    setHistory((prev) => [...prev, { inputValue, ...result }]);
+
+    if (result?.strike === 3) {
+      const timeout = setTimeout(() => {
+        setSecretNum(createSecretNum());
+        setInputValue(null);
+        setIsValid(true);
+      }, 3000);
+      return () => clearTimeout(timeout);
+    }
+  }, [inputValue]);
+
   return (
     <div>
       <Input onSubmit={handleInputSubmit} />
-      <Message isValid={isValid} result={result} />
-      <List inputValue={inputValue} result={result} />
+      {result && <Message isValid={isValid} result={result} />}
+      {inputValue && <List history={history} />}
     </div>
   );
 };
