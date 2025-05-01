@@ -17,8 +17,10 @@ const Input = ({ onSubmit }) => {
       uniqueDigits.size !== digits.length
     ) {
       onSubmit(inputValue, false);
+      setInputValue("");
     } else {
       onSubmit(inputValue, true);
+      setInputValue("");
     }
   };
 
