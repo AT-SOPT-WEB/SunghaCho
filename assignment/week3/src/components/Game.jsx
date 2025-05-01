@@ -86,7 +86,7 @@ const Game = () => {
   return (
     <div>
       <Input onSubmit={handleInputSubmit} />
-      {inputValue && (result || !isValid) && (
+      {(result || !isValid) && (
         <Message isValid={isValid} result={result} count={history.length} />
       )}
       {inputValue && <List history={history} />}
