@@ -61,21 +61,34 @@ const Game = () => {
   useEffect(() => {
     if (result == "") return;
     setHistory((prev) => [...prev, { inputValue, ...result }]);
+  }, [inputValue]);
 
+  useEffect(() => {
     if (result?.strike === 3) {
       const timeout = setTimeout(() => {
         setSecretNum(createSecretNum());
         setInputValue(null);
         setIsValid(true);
+        setHistory([]);
       }, 3000);
       return () => clearTimeout(timeout);
+    } else if (history?.length >= 10) {
+      const timeout = setTimeout(() => {
+        setSecretNum(createSecretNum());
+        setInputValue(null);
+        setIsValid(true);
+        setHistory([]);
+      }, 5000);
+      return () => clearTimeout(timeout);
     }
-  }, [inputValue]);
+  }, [history, result]);
 
   return (
     <div>
       <Input onSubmit={handleInputSubmit} />
-      {result && <Message isValid={isValid} result={result} />}
+      {inputValue && (result || !isValid) && (
+        <Message isValid={isValid} result={result} count={history.length} />
+      )}
       {inputValue && <List history={history} />}
     </div>
   );
