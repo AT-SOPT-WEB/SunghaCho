@@ -12,7 +12,7 @@ const Message = ({ isValid, result }) => {
     } else if (strike === 3) {
       setMessage("정답입니다! 3초 뒤에 게임이 리셋됩니다.");
     } else {
-      setMessage(`${strike}S ${ball}B`);
+      setMessage(`${strike} 스트라이크 ${ball} 볼`);
     }
   }, [result]);
 
