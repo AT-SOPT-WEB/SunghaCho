@@ -22,7 +22,9 @@ const Github = () => {
     setRecentList(recentLog);
   };
 
-  console.log(profile);
+  const handleSearchRecent = (value) => {
+    setProfile(value);
+  };
 
   const handleClose = () => {
     setProfile("");
@@ -31,7 +33,11 @@ const Github = () => {
   return (
     <>
       <Input onSubmit={handleSearch} />
-      <Recent recent={recentList} setRecentList={setRecentList} />
+      <Recent
+        recent={recentList}
+        setRecentList={setRecentList}
+        onSearch={handleSearchRecent}
+      />
       {profile && <Card profile={profile} onClose={handleClose} />}
     </>
   );

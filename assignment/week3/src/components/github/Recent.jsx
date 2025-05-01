@@ -1,6 +1,6 @@
 import React from "react";
 
-const Recent = ({ recent, setRecentList }) => {
+const Recent = ({ recent, setRecentList, onSearch }) => {
   const handleDelete = (removeItem) => {
     const newRecent = recent.filter((item) => item !== removeItem);
     localStorage.setItem("recentSearches", JSON.stringify(newRecent));
@@ -11,7 +11,9 @@ const Recent = ({ recent, setRecentList }) => {
     <>
       {recent.map((item, index) => (
         <>
-          <div key={index}>{item}</div>
+          <div key={index} onClick={() => onSearch(item)}>
+            {item}
+          </div>
           <button onClick={() => handleDelete(item)}>x</button>
         </>
       ))}
