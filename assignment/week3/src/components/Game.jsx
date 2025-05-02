@@ -2,6 +2,12 @@ import React, { useState, useEffect } from "react";
 import Input from "./game/Input";
 import Message from "./game/Message";
 import List from "./game/List";
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
+
+const inputStyle = css`
+  color: yellow;
+`;
 
 const Game = () => {
   const [secretNum, setSecretNum] = useState([]);
@@ -85,7 +91,7 @@ const Game = () => {
 
   return (
     <div>
-      <Input onSubmit={handleInputSubmit} />
+      <Input onSubmit={handleInputSubmit} css={inputStyle} />
       {(result || !isValid) && (
         <Message isValid={isValid} result={result} count={history.length} />
       )}

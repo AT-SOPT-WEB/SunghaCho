@@ -1,4 +1,47 @@
 import React, { useState, useEffect } from "react";
+/** @jsxImportSource @emotion/react */
+import { css, keyframes } from "@emotion/react";
+
+const slideUp = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
+const invalidMessage = css`
+  animation: ${slideUp} 0.4s ease;
+  width: fit-content;
+  padding: 0px 30px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #bfbfbf;
+  color: #030303;
+  border-radius: 18px;
+  margin-top: 20px;
+  text-align: center;
+`;
+
+const validMessage = css`
+  animation: ${slideUp} 0.4s ease;
+  width: fit-content;
+  padding: 0px 30px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #007aff;
+  color: #ffffff;
+  border-radius: 18px;
+  margin-top: 20px;
+  text-align: center;
+`;
 
 const Message = ({ isValid, result, count }) => {
   const [message, setMessage] = useState("");
@@ -22,8 +65,10 @@ const Message = ({ isValid, result, count }) => {
 
   return (
     <>
-      {!isValid && <div>서로 다른 숫자 3자리를 입력해주세요.</div>}
-      {isValid && <div>{message}</div>}
+      {!isValid && (
+        <div css={invalidMessage}>서로 다른 숫자 3자리를 입력해주세요.</div>
+      )}
+      {isValid && <div css={validMessage}>{message}</div>}
     </>
   );
 };

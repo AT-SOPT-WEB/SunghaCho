@@ -1,4 +1,15 @@
 import React, { useState } from "react";
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
+
+const inputStyle = css`
+  width: 480px;
+  height: 54px;
+  border: none;
+  border-radius: 40px;
+  padding: 0px 20px;
+  font-size: 16px;
+`;
 
 const Input = ({ onSubmit }) => {
   const [inputValue, setInputValue] = useState("");
@@ -32,6 +43,7 @@ const Input = ({ onSubmit }) => {
           value={inputValue}
           placeholder="3자리 숫자를 입력해주세요."
           onChange={handleChange}
+          css={inputStyle}
         />
       </form>
     </>
