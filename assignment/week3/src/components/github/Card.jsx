@@ -1,4 +1,95 @@
 import { useState, useEffect } from "react";
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
+
+const container = css`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 30px;
+  margin-top: 20px;
+  text-align: center;
+`;
+
+const btnWrapper = css`
+  width: 94%;
+  margin-top: 20px;
+  display: flex;
+  justify-content: right;
+`;
+
+const closeBtn = css`
+  border: none;
+  background-color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+`;
+
+const iconStyle = css`
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+`;
+
+const imgBox = css`
+  width: 300px;
+  height: 300px;
+  border-radius: 300px;
+  border: 2px solid #e2e2e2;
+  overflow: hidden;
+  justify-content: center;
+  margin-top: 20px;
+`;
+
+const img = css`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
+
+const aStyle = css`
+  color: inherit;
+  text-decoration: none;
+`;
+
+const idText = css`
+  margin: 15px 0px;
+  font-size: 26px;
+  font-weight: 600;
+`;
+
+const nameText = css`
+  font-size: 20px;
+  font-weight: 400;
+  color: #7a7a7a;
+`;
+
+const bioText = css`
+  margin: 10px 0px;
+  font-size: 15px;
+  color: #7a7a7a;
+`;
+
+const followBox = css`
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  color: #4a4a4a;
+`;
+
+const followText = css`
+  margin: 10px 0px 5px 0px;
+`;
+
+const urlStyle = css`
+  margin: 5px 0px 25px 0px;
+  color: #878787;
+`;
 
 const Card = ({ profile, onClose }) => {
   const [userInfo, setUserInfo] = useState({ status: "idle", data: null });
@@ -28,21 +119,30 @@ const Card = ({ profile, onClose }) => {
   }, [profile]);
 
   return (
-    <div>
-      <button onClick={onClose}>x</button>
+    <div css={container}>
+      <div css={btnWrapper}>
+        <button onClick={onClose} css={closeBtn}>
+          <img src="/close.png" css={iconStyle} />
+        </button>
+      </div>
       {userInfo.status === "resolved" && (
         <div>
-          <a href={userInfo.data.html_url} target="_blank">
-            <img src={userInfo.data.avatar_url} />
-            <p>{userInfo.data.name}</p>
+          <a href={userInfo.data.html_url} css={aStyle} target="_blank">
+            <div css={imgBox}>
+              <img css={img} src={userInfo.data.avatar_url} />
+            </div>
+            <p css={idText}>{userInfo.data.login}</p>
+            <p css={nameText}>{userInfo.data.name}</p>
           </a>
-          <p>한줄소개: {userInfo.data.bio}</p>
-          <p>팔로워: {userInfo.data.followers}</p>
-          <p>팔로잉: {userInfo.data.following}</p>
-
-          <p>
-            깃허브 프로필 링크:
-            <a href={userInfo.data.html_url}>{userInfo.data.html_url}</a>
+          <p css={bioText}>{userInfo.data.bio}</p>
+          <div css={followBox}>
+            <p css={followText}>{userInfo.data.followers} followers </p>
+            <p css={followText}>{userInfo.data.following} following </p>
+          </div>
+          <p css={urlStyle}>
+            <a href={userInfo.data.html_url} css={aStyle}>
+              {userInfo.data.html_url}
+            </a>
           </p>
         </div>
       )}

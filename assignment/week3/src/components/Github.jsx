@@ -31,7 +31,7 @@ const Github = () => {
   };
 
   return (
-    <>
+    <div>
       <Input onSubmit={handleSearch} />
       <Recent
         recent={recentList}
@@ -39,7 +39,7 @@ const Github = () => {
         onSearch={handleSearchRecent}
       />
       {profile && <Card profile={profile} onClose={handleClose} />}
-    </>
+    </div>
   );
 };
 
