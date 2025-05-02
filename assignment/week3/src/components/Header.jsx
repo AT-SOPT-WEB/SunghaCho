@@ -25,8 +25,7 @@ const buttonStyle = (active) => css`
   border: none;
   border-radius: 50px;
   border: 5px solid #c2c2c2;
-  background-color: ${active ? "#f8f8f8" : "#c2c2c2"};
-  color: ${active ? "#161614" : "#f1f1f1"};
+  background-color: ${active ? "#ffffff" : "#c2c2c2"};
   font-weight: ${active ? "bold" : "normal"};
   transition: all 0.5s ease;
   cursor: pointer;

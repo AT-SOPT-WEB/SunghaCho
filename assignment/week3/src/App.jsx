@@ -8,16 +8,13 @@ import { Global, css } from "@emotion/react";
 const container = css`
   width: 100vw;
   display: grid;
-  background-color: #eaeaea;
 `;
 
 const wrapper = css`
   display: grid;
   width: 100vw;
-  height: 100vh;
   justify-items: center;
   margin-top: 10px;
-  background-color: #eaeaea;
 `;
 
 function App() {
@@ -35,7 +32,7 @@ function App() {
           }
 
           body {
-            background-color: #fff;
+            background-color: #eaeaea;
             color: #000;
           }
         `}

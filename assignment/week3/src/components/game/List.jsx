@@ -31,6 +31,7 @@ const listBox = css`
   border-radius: 18px;
   margin-top: 20px;
   text-align: center;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.15);
 `;
 
 const List = ({ history }) => {

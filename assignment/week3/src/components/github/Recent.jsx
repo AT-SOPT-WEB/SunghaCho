@@ -20,6 +20,7 @@ const tagBox = css`
   background-color: #ffffff;
   padding: 0px 10px 0px 15px;
   height: 40px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   cursor: pointer;
 `;
 

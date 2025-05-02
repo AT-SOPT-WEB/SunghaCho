@@ -36,6 +36,7 @@ const container = css`
   border-radius: 30px;
   margin-top: 20px;
   text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 `;
 
 const btnWrapper = css`
