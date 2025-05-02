@@ -1,6 +1,32 @@
 import { useState, useEffect } from "react";
 /** @jsxImportSource @emotion/react */
-import { css } from "@emotion/react";
+import { css, keyframes } from "@emotion/react";
+
+const spin = keyframes`
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+`;
+
+const spinner = css`
+  width: 50px;
+  height: 50px;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #7a7a7a;
+  border-radius: 50%;
+  animation: ${spin} 1s linear infinite;
+`;
+
+const divBox = css`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 500px;
+`;
 
 const container = css`
   display: flex;
@@ -119,34 +145,40 @@ const Card = ({ profile, onClose }) => {
   }, [profile]);
 
   return (
-    <div css={container}>
-      <div css={btnWrapper}>
-        <button onClick={onClose} css={closeBtn}>
-          <img src="/close.png" css={iconStyle} />
-        </button>
-      </div>
+    <>
       {userInfo.status === "resolved" && (
-        <div>
-          <a href={userInfo.data.html_url} css={aStyle} target="_blank">
-            <div css={imgBox}>
-              <img css={img} src={userInfo.data.avatar_url} />
-            </div>
-            <p css={idText}>{userInfo.data.login}</p>
-            <p css={nameText}>{userInfo.data.name}</p>
-          </a>
-          <p css={bioText}>{userInfo.data.bio}</p>
-          <div css={followBox}>
-            <p css={followText}>{userInfo.data.followers} followers </p>
-            <p css={followText}>{userInfo.data.following} following </p>
+        <div css={container}>
+          <div css={btnWrapper}>
+            <button onClick={onClose} css={closeBtn}>
+              <img src="/close.png" css={iconStyle} />
+            </button>
           </div>
-          <p css={urlStyle}>
-            <a href={userInfo.data.html_url} css={aStyle}>
-              {userInfo.data.html_url}
+          <div>
+            <a href={userInfo.data.html_url} css={aStyle} target="_blank">
+              <div css={imgBox}>
+                <img css={img} src={userInfo.data.avatar_url} />
+              </div>
+              <p css={idText}>{userInfo.data.login}</p>
+              <p css={nameText}>{userInfo.data.name}</p>
             </a>
-          </p>
+            <p css={bioText}>{userInfo.data.bio}</p>
+            <div css={followBox}>
+              <p css={followText}>{userInfo.data.followers} followers </p>
+              <p css={followText}>{userInfo.data.following} following </p>
+            </div>
+            <p css={urlStyle}>
+              <a href={userInfo.data.html_url} css={aStyle}>
+                {userInfo.data.html_url}
+              </a>
+            </p>
+          </div>
         </div>
       )}
-    </div>
+      <div css={divBox}>
+        {userInfo.status === "pending" && <div css={spinner}></div>}
+        {userInfo.status === "rejected" && <div>검색 결과가 없습니다.</div>}
+      </div>
+    </>
   );
 };
 
