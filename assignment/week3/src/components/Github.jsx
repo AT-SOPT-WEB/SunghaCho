@@ -14,6 +14,7 @@ const Github = () => {
     console.log(value);
 
     const prev = JSON.parse(localStorage.getItem("recentSearches")) || [];
+    if (prev.includes(value)) return;
     const recentLog = [value, ...prev.filter((item) => item !== value)].slice(
       0,
       3
