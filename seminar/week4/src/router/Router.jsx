@@ -1,3 +1,4 @@
+import React from "react";
 import { createBrowserRouter } from "react-router";
 import PokemonDetail from "../pages/PokemonDetail";
 import Home from "../pages/Home";
