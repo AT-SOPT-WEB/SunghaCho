@@ -144,6 +144,8 @@ completeBtn.addEventListener("click", () => {
         )?.completed
     )
   ) {
+    document.getElementById("modal-text").textContent =
+      "이미 완료된 todo입니다.";
     modal.classList.add("show");
     return;
   }
