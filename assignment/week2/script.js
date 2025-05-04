@@ -144,7 +144,7 @@ completeBtn.addEventListener("click", () => {
         )?.completed
     )
   ) {
-    modal.style.display = "block";
+    modal.classList.add("show");
     return;
   }
 

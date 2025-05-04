@@ -205,6 +205,11 @@ table td {
   color: #2b2b2b;
 }
 
+.modal.show {
+  display: block;
+  opacity: 1;
+}
+
 .close-btn {
   display: block;
   width: 100%;
