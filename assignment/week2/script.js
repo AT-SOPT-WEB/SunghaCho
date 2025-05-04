@@ -27,7 +27,7 @@ if (!localStorage.getItem("todos")) {
 }
 let todoData = JSON.parse(localStorage.getItem("todos")) || [];
 
-// To-Do row 생성 함수수
+// To-Do row 생성 함수
 function createTodoRow(todo) {
   const tr = document.createElement("tr");
   tr.dataset.id = todo.id;
