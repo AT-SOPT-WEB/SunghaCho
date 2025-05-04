@@ -235,15 +235,15 @@ tbody.addEventListener("dragstart", (e) => {
 
 tbody.addEventListener("dragover", (e) => {
   e.preventDefault();
-  const target = e.target.closest("tr");
-  const rect = target.getBoundingClientRect();
-  const offset = e.clientY - rect.top;
-  const insertAfter = offset > rect.height / 2;
+  const targetRow = e.target.closest("tr");
+  const { top: rowTop, height: rowHeight } = targetRow.getBoundingClientRect();
+  const mouseY = e.clientY;
+  const isMouseInLowerHalf = mouseY > rowTop + rowHeight / 2;
 
-  if (insertAfter) {
-    tbody.insertBefore(dropLine, target.nextSibling);
+  if (isMouseInLowerHalf) {
+    tbody.insertBefore(dropLine, targetRow.nextSibling);
   } else {
-    tbody.insertBefore(dropLine, target);
+    tbody.insertBefore(dropLine, targetRow);
   }
 });
 
