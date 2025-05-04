@@ -200,17 +200,14 @@ filterAll.addEventListener("click", () => {
   resetDropdowns();
 });
 
-filterCompleted.addEventListener("click", () => {
-  const filtered = todoData.filter((todo) => todo.completed === true);
+function handleFilter(isCompleted) {
+  const filtered = todoData.filter((todo) => todo.completed === isCompleted);
   filterTodo(filtered);
   resetDropdowns();
-});
+}
 
-filterIncompleted.addEventListener("click", () => {
-  const filtered = todoData.filter((todo) => todo.completed === false);
-  filterTodo(filtered);
-  resetDropdowns();
-});
+filterCompleted.addEventListener("click", () => handleFilter(true));
+filterIncompleted.addEventListener("click", () => handleFilter(false));
 
 filterCustom.addEventListener("click", (e) => {
   e.stopPropagation();
