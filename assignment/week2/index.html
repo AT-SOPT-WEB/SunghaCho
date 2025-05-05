@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style/style.css" />
+    <link rel="stylesheet" href="./style/reset.css" />
+    <title>Todo</title>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <p>Filter</p>
+        <section class="filter-section">
+          <button class="filter-all">
+            <img src="./assets/ic-asterisk.svg" alt="애스터리스크 아이콘" /> All
+          </button>
+          <button class="filter-completed">
+            <img src="./assets/ic-sun.svg" alt="태양 아이콘" />Done
+          </button>
+          <button class="filter-incompleted">
+            <img src="./assets/ic-moon.svg" alt="달 아이콘" />Incompleted
+          </button>
+          <div class="custom-select filter-custom">
+            <div class="selected-option filter-option">
+              중요도
+              <img src="./assets/ic-drop.svg" alt="드롭다운 아이콘" />
+            </div>
+            <ul class="option-list filter-option-list">
+              <li data-value="1">1</li>
+              <li data-value="2">2</li>
+              <li data-value="3">3</li>
+            </ul>
+          </div>
+        </section>
+      </header>
+      <main>
+        <section class="add-section">
+          <input class="todo-input" placeholder="할 일을 입력하세요" />
+          <div class="custom-select add-custom">
+            <div class="selected-option add-option">
+              중요도 선택
+              <img src="./assets/ic-drop.svg" alt="드롭다운 아이콘" />
+            </div>
+            <ul class="option-list add-option-list">
+              <li data-value="1">1</li>
+              <li data-value="2">2</li>
+              <li data-value="3">3</li>
+            </ul>
+          </div>
+          <button class="add-btn">
+            <img src="./assets/ic-add.svg" alt="추가 아이콘" />
+          </button>
+        </section>
+        <section class="status-section">
+          <h1>Task To do</h1>
+          <div class="btn-container">
+            <button class="delete-btn">삭제</button>
+            <button class="complete-btn">완료</button>
+          </div>
+        </section>
+        <section class="todo-table">
+          <table>
+            <thead>
+              <tr>
+                <th>
+                  <input type="checkbox" class="check-all" />
+                </th>
+                <th>중요도</th>
+                <th>상태</th>
+                <th>할 일</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </section>
+      </main>
+    </div>
+    <aside class="modal">
+      <div class="modal-popup">
+        <p id="modal-text"></p>
+        <button type="button" class="close-btn">닫기</button>
+      </div>
+    </aside>
+    <script type="module" src="script.js"></script>
+  </body>
+</html>
