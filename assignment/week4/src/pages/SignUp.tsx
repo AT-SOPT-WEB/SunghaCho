@@ -1,13 +1,10 @@
 import { useState } from "react";
-import SignUpId from "./SignUpId";
-import SignUpPwd from "./SignUpPwd";
-import SignUpName from "./SignUpName";
+import { Link } from "react-router";
+import SignUpId from "../components/login/SignUpId";
+import SignUpPwd from "../components/login/SignUpPwd";
+import SignUpName from "../components/login/SignUpName";
 
-type SignUpProps = {
-  handleCurrentStep: (step: "signin" | "signup") => void;
-};
-
-const SignUp = ({ handleCurrentStep }: SignUpProps) => {
+const SignUp = () => {
   type SignUpStep = "signupid" | "signuppwd" | "signupname";
   const [signupStep, setSignupStep] = useState<SignUpStep>("signupid");
   return (
@@ -21,7 +18,7 @@ const SignUp = ({ handleCurrentStep }: SignUpProps) => {
       )}
       {signupStep == "signupname" && <SignUpName />}
       <p>이미 회원이신가요?</p>
-      <button onClick={() => handleCurrentStep("signin")}>로그인</button>
+      <Link to="/signin">로그인</Link>
     </>
   );
 };

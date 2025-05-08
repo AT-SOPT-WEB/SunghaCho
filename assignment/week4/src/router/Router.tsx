@@ -1,14 +1,19 @@
 import { createBrowserRouter, Navigate } from "react-router";
-import Login from "../pages/Login";
+import SignIn from "../pages/SignIn";
+import SignUp from "../pages/SignUp";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Navigate to="/login" />, // 기본 경로에서 /login으로 리다이렉트
+    element: <Navigate to="/signin" />, // 기본 경로에서 /login으로 리다이렉트
   },
   {
-    path: "/login",
-    element: <Login />,
+    path: "/signin",
+    element: <SignIn />,
+  },
+  {
+    path: "/signup",
+    element: <SignUp />,
   },
 ]);
 
