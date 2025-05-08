@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router";
-import SignUpId from "../components/login/SignUpId";
-import SignUpPwd from "../components/login/SignUpPwd";
-import SignUpName from "../components/login/SignUpName";
+import SignUpId from "../../components/login/SignUpId";
+import SignUpPwd from "../../components/login/SignUpPwd";
+import SignUpName from "../../components/login/SignUpName";
 
 const SignUp = () => {
   type SignUpStep = "signupid" | "signuppwd" | "signupname";
