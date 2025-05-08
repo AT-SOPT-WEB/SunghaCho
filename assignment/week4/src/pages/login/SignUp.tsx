@@ -1,9 +1,15 @@
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
 import { useState } from "react";
 import { Link } from "react-router";
 import Container from "../../components/styled/Container";
 import SignUpId from "../../components/login/SignUpId";
 import SignUpPwd from "../../components/login/SignUpPwd";
 import SignUpName from "../../components/login/SignUpName";
+
+const linkstyle = css`
+  color: black;
+`;
 
 const SignUp = () => {
   type SignUpStep = "signupid" | "signuppwd" | "signupname" | "done";
@@ -19,7 +25,9 @@ const SignUp = () => {
       )}
       {signupStep == "signupname" && <SignUpName />}
       <p>이미 회원이신가요?</p>
-      <Link to="/signin">로그인</Link>
+      <Link to="/signin" css={linkstyle}>
+        로그인
+      </Link>
     </Container>
   );
 };
