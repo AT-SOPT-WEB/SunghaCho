@@ -3,15 +3,16 @@ import Input from "../styled/Input";
 import { useState, useEffect } from "react";
 
 type SignUpIdProps = {
+  newId: string;
+  setNewId: React.Dispatch<React.SetStateAction<string>>;
   handleSignupStep: (step: "signupid" | "signuppwd" | "signupname") => void;
 };
 
-const SignUpId = ({ handleSignupStep }: SignUpIdProps) => {
-  const [newId, setNewId] = useState("");
+const SignUpId = ({ newId, setNewId, handleSignupStep }: SignUpIdProps) => {
   const [isBtnEnable, setIsBtnEnable] = useState(false);
 
   useEffect(() => {
-    setIsBtnEnable(!newId);
+    setIsBtnEnable(newId.length < 8 || newId.length > 20);
   }, [newId]);
 
   return (

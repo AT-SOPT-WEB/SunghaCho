@@ -9,8 +9,17 @@ const linkstyle = css`
   text-decoration: none;
 `;
 
-const SignUpName = () => {
-  const [nickname, setNickname] = useState("");
+type SignUpNameProps = {
+  nickname: string;
+  setNickname: React.Dispatch<React.SetStateAction<string>>;
+  handleSignupStep: () => void;
+};
+
+const SignUpName = ({
+  nickname,
+  setNickname,
+  handleSignupStep,
+}: SignUpNameProps) => {
   const [isBtnEnable, setIsBtnEnable] = useState(false);
 
   useEffect(() => {
@@ -25,7 +34,9 @@ const SignUpName = () => {
         onChange={(e) => setNickname(e.target.value)}
       />
       <Link to="/signin" css={linkstyle}>
-        <Button disabled={isBtnEnable}>회원가입 하기</Button>
+        <Button disabled={isBtnEnable} onClick={() => handleSignupStep()}>
+          회원가입 하기
+        </Button>
       </Link>
     </>
   );

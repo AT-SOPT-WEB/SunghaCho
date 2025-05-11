@@ -2,6 +2,7 @@
 import { css } from "@emotion/react";
 import { useState } from "react";
 import { Link } from "react-router";
+import axios from "axios";
 import Container from "../../components/styled/Container";
 import SignUpId from "../../components/login/SignUpId";
 import SignUpPwd from "../../components/login/SignUpPwd";
@@ -12,18 +13,53 @@ const linkstyle = css`
 `;
 
 const SignUp = () => {
-  type SignUpStep = "signupid" | "signuppwd" | "signupname" | "done";
+  type SignUpStep = "signupid" | "signuppwd" | "signupname";
   const [signupStep, setSignupStep] = useState<SignUpStep>("signupid");
+
+  const [newId, setNewId] = useState("");
+  const [newPwd, setNewPwd] = useState("");
+  const [nickname, setNickname] = useState("");
+
+  const postSignUp = async () => {
+    try {
+      const res = await axios.post(
+        `${import.meta.env.VITE_API_BASE_URL}/api/v1/auth/signup`,
+        {
+          loginId: newId,
+          password: newPwd,
+          nickname: nickname,
+        }
+      );
+      console.log(res.data);
+    } catch (error) {
+      console.error("아이디 중복 확인에 실패했습니다.", error);
+    }
+  };
+
   return (
     <Container>
       <h1>회원가입</h1>
       {signupStep == "signupid" && (
-        <SignUpId handleSignupStep={setSignupStep} />
+        <SignUpId
+          newId={newId}
+          setNewId={setNewId}
+          handleSignupStep={setSignupStep}
+        />
       )}
       {signupStep == "signuppwd" && (
-        <SignUpPwd handleSignupStep={setSignupStep} />
+        <SignUpPwd
+          newPwd={newPwd}
+          setNewPwd={setNewPwd}
+          handleSignupStep={setSignupStep}
+        />
       )}
-      {signupStep == "signupname" && <SignUpName />}
+      {signupStep == "signupname" && (
+        <SignUpName
+          nickname={nickname}
+          setNickname={setNickname}
+          handleSignupStep={postSignUp}
+        />
+      )}
       <p>이미 회원이신가요?</p>
       <Link to="/signin" css={linkstyle}>
         로그인
