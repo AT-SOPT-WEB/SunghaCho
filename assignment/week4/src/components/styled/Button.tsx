@@ -9,8 +9,8 @@ const StyledButton = styled.button`
   border-radius: 1rem;
   font-size: 16px;
   cursor: pointer;
-  color: #000000;
-  background-color: #e9e9e9;
+  color: #ffffff;
+  background-color: #000000;
   text-decoration: none;
 
   &:disabled {

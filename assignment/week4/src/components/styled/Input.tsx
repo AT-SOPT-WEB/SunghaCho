@@ -14,10 +14,19 @@ const StyledInput = styled.input`
 
 type InputProps = {
   placeholder: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-const Button = ({ placeholder }: InputProps) => {
-  return <StyledInput type="text" placeholder={placeholder} />;
+const Button = ({ placeholder, value, onChange }: InputProps) => {
+  return (
+    <StyledInput
+      type="text"
+      placeholder={placeholder}
+      value={value}
+      onChange={onChange}
+    />
+  );
 };
 
 export default Button;
