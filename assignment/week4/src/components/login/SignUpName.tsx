@@ -1,13 +1,6 @@
-/** @jsxImportSource @emotion/react */
-import { css } from "@emotion/react";
 import { useState, useEffect } from "react";
-import { Link } from "react-router";
 import Button from "../styled/Button";
 import Input from "../styled/Input";
-
-const linkstyle = css`
-  text-decoration: none;
-`;
 
 type SignUpNameProps = {
   nickname: string;
@@ -33,11 +26,9 @@ const SignUpName = ({
         value={nickname}
         onChange={(e) => setNickname(e.target.value)}
       />
-      <Link to="/signin" css={linkstyle}>
-        <Button disabled={isBtnEnable} onClick={() => handleSignupStep()}>
-          회원가입 하기
-        </Button>
-      </Link>
+      <Button disabled={isBtnEnable} onClick={() => handleSignupStep()}>
+        회원가입 하기
+      </Button>
     </>
   );
 };

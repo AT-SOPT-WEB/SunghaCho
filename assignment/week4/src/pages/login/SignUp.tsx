@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { useState } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import axios from "axios";
 import Container from "../../components/styled/Container";
 import SignUpId from "../../components/login/SignUpId";
@@ -15,10 +15,10 @@ const linkstyle = css`
 const SignUp = () => {
   type SignUpStep = "signupid" | "signuppwd" | "signupname";
   const [signupStep, setSignupStep] = useState<SignUpStep>("signupid");
-
   const [newId, setNewId] = useState("");
   const [newPwd, setNewPwd] = useState("");
   const [nickname, setNickname] = useState("");
+  const navigate = useNavigate();
 
   const postSignUp = async () => {
     try {
@@ -31,8 +31,11 @@ const SignUp = () => {
         }
       );
       console.log(res.data);
+      alert(`${res.data.nickname}님, 회원 가입을 축하드립니다!`);
+      navigate("/signin");
     } catch (error) {
       console.error("아이디 중복 확인에 실패했습니다.", error);
+      alert("회원가입 실패");
     }
   };
 
