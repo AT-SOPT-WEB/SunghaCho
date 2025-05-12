@@ -17,3 +17,7 @@ export type InputProps = {
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
+
+export type TitleProps = {
+  children: React.ReactNode;
+};

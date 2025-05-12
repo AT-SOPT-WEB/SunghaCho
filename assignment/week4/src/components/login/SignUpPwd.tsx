@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Button from "../styled/Button";
 import Input from "../styled/Input";
 import ErrorMessage from "../styled/ErrorMessage";
+import Subtitle from "../styled/Subtitle";
 import type { SignUpPwdProps } from "@/types/props/auth";
 
 const SignUpPwd = ({ newPwd, setNewPwd, handleSignupStep }: SignUpPwdProps) => {
@@ -34,7 +35,7 @@ const SignUpPwd = ({ newPwd, setNewPwd, handleSignupStep }: SignUpPwdProps) => {
 
   return (
     <>
-      <h2>비밀번호</h2>
+      <Subtitle>비밀번호</Subtitle>
       <Input
         placeholder="비밀번호를 입력해주세요"
         value={newPwd}

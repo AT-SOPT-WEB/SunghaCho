@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Button from "../styled/Button";
 import Input from "../styled/Input";
+import Subtitle from "../styled/Subtitle";
 import type { SignUpNameProps } from "@/types/props/auth";
 
 const SignUpName = ({
@@ -16,7 +17,7 @@ const SignUpName = ({
 
   return (
     <>
-      <h2>닉네임</h2>
+      <Subtitle>닉네임</Subtitle>
       <Input
         placeholder="닉네임을 입력해주세요"
         value={nickname}

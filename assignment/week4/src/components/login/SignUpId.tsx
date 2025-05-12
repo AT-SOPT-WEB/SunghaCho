@@ -1,6 +1,7 @@
 import Button from "../styled/Button";
 import Input from "../styled/Input";
 import ErrorMessage from "../styled/ErrorMessage";
+import Subtitle from "../styled/Subtitle";
 import { useState, useEffect } from "react";
 import type { SignUpIdProps } from "@/types/props/auth";
 
@@ -13,7 +14,7 @@ const SignUpId = ({ newId, setNewId, handleSignupStep }: SignUpIdProps) => {
 
   return (
     <>
-      <h2>아이디</h2>
+      <Subtitle>아이디</Subtitle>
       <Input
         placeholder="아이디를 입력해주세요(8~20자 대소문자/숫자만 가능)"
         value={newId}

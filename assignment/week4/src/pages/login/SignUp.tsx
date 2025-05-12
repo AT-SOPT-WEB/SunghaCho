@@ -3,13 +3,19 @@ import { css } from "@emotion/react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
 import Container from "../../components/styled/Container";
+import Title from "../../components/styled/Title";
 import SignUpId from "../../components/login/SignUpId";
 import SignUpPwd from "../../components/login/SignUpPwd";
 import SignUpName from "../../components/login/SignUpName";
 import { postSignUp } from "../../api/auth";
 
+const divstyle = css`
+  display: flex;
+  gap: 0.6rem;
+`;
 const linkstyle = css`
   color: black;
+  font-weight: 500;
 `;
 
 const SignUp = () => {
@@ -37,7 +43,7 @@ const SignUp = () => {
 
   return (
     <Container>
-      <h1>회원가입</h1>
+      <Title>회원가입</Title>
       {signupStep === "signupid" && (
         <SignUpId
           newId={newId}
@@ -59,10 +65,12 @@ const SignUp = () => {
           handleSignupStep={handleSignUp}
         />
       )}
-      <p>이미 회원이신가요?</p>
-      <Link to="/signin" css={linkstyle}>
-        로그인
-      </Link>
+      <div css={divstyle}>
+        <p>이미 회원이신가요?</p>
+        <Link to="/signin" css={linkstyle}>
+          로그인
+        </Link>
+      </div>
     </Container>
   );
 };

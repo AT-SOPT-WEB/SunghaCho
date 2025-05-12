@@ -4,6 +4,8 @@ import Header from "../../components/mypage/Header";
 import Container from "../../components/styled/Container";
 import Input from "../../components/styled/Input";
 import Button from "../../components/styled/Button";
+import Title from "../../components/styled/Title";
+import Subtitle from "../../components/styled/Subtitle";
 import { patchNickname } from "../../api/users";
 
 const MyInfo = () => {
@@ -35,8 +37,8 @@ const MyInfo = () => {
     <>
       <Header />
       <Container>
-        <h2>내 정보 수정하기</h2>
-        <p>새 닉네임</p>
+        <Title>내 정보 수정하기</Title>
+        <Subtitle>새 닉네임</Subtitle>
         <Input
           placeholder="새 닉네임을 입력하세요"
           value={newNickname}

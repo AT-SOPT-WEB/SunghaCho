@@ -5,10 +5,12 @@ import { Link, useNavigate } from "react-router";
 import Container from "../../components/styled/Container";
 import Input from "../../components/styled/Input";
 import Button from "../../components/styled/Button";
+import Title from "../../components/styled/Title";
 import { postSignIn } from "../../api/auth";
 
 const linkstyle = css`
   color: black;
+  font-weight: 500;
 `;
 
 const SignIn = () => {
@@ -35,7 +37,7 @@ const SignIn = () => {
 
   return (
     <Container>
-      <h1>로그인</h1>
+      <Title>로그인</Title>
       <Input
         placeholder="아이디"
         value={id}
