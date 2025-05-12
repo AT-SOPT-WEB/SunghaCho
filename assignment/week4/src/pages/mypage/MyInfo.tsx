@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router";
 import Header from "../../components/mypage/Header";
 import Container from "../../components/styled/Container";
@@ -10,12 +10,7 @@ import { patchNickname } from "../../api/users";
 
 const MyInfo = () => {
   const [newNickname, setNewNickname] = useState<string>("");
-  const [isBtnDisable, setIsBtnDisable] = useState<boolean>(true);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    setIsBtnDisable(!newNickname);
-  }, [newNickname]);
 
   const handlePatchNickname = async () => {
     const userId = localStorage.getItem("userId");
@@ -46,9 +41,7 @@ const MyInfo = () => {
             setNewNickname(e.target.value)
           }
         />
-        <Button disabled={isBtnDisable} onClick={handlePatchNickname}>
-          변경사항 저장
-        </Button>
+        <Button onClick={handlePatchNickname}>변경사항 저장</Button>
       </Container>
     </>
   );
