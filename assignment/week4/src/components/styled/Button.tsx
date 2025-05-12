@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import type { ButtonProps } from "@/types/styled";
 
 const StyledButton = styled.button`
   display: block;
@@ -20,12 +21,6 @@ const StyledButton = styled.button`
     text-decoration: none;
   }
 `;
-
-type ButtonProps = {
-  onClick?: () => void;
-  disabled?: boolean;
-  children: React.ReactNode;
-};
 
 const Button = ({ onClick, disabled, children }: ButtonProps) => {
   return (

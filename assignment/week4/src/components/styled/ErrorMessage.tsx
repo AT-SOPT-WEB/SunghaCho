@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import type { ErrorMessageProps } from "@/types/styled";
 
 const StyledP = styled.div`
   width: 28rem;
@@ -7,10 +8,6 @@ const StyledP = styled.div`
   text-align: left;
   color: #ff0000;
 `;
-
-type ErrorMessageProps = {
-  message: string;
-};
 
 const ErrorMessage = ({ message }: ErrorMessageProps) => {
   return <StyledP>{message}</StyledP>;

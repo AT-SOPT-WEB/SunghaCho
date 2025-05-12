@@ -12,9 +12,9 @@ const linkstyle = css`
 `;
 
 const SignIn = () => {
-  const [id, setId] = useState("");
-  const [password, setPassword] = useState("");
-  const [isBtnEnable, setIsBtnEnable] = useState(false);
+  const [id, setId] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [isBtnEnable, setIsBtnEnable] = useState<boolean>(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -46,14 +46,18 @@ const SignIn = () => {
       <Input
         placeholder="아이디"
         value={id}
-        onChange={(e) => setId(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          setId(e.target.value)
+        } // onChange에 타입 지정
       />
       <Input
         placeholder="비밀번호"
         value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          setPassword(e.target.value)
+        } // onChange에 타입 지정
       />
-      <Button disabled={isBtnEnable} onClick={() => postSignIn()}>
+      <Button disabled={isBtnEnable} onClick={postSignIn}>
         로그인
       </Button>
       <Link to="/signup" css={linkstyle}>

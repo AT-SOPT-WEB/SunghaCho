@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import type { InputProps } from "@/types/styled";
 
 const StyledInput = styled.input`
   display: block;
@@ -11,12 +12,6 @@ const StyledInput = styled.input`
   font-size: 16px;
   color: #000000;
 `;
-
-type InputProps = {
-  placeholder: string;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-};
 
 const Button = ({ placeholder, value, onChange }: InputProps) => {
   return (

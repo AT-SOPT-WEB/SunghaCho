@@ -2,15 +2,10 @@ import Button from "../styled/Button";
 import Input from "../styled/Input";
 import ErrorMessage from "../styled/ErrorMessage";
 import { useState, useEffect } from "react";
-
-type SignUpIdProps = {
-  newId: string;
-  setNewId: React.Dispatch<React.SetStateAction<string>>;
-  handleSignupStep: (step: "signupid" | "signuppwd" | "signupname") => void;
-};
+import type { SignUpIdProps } from "@/types/auth";
 
 const SignUpId = ({ newId, setNewId, handleSignupStep }: SignUpIdProps) => {
-  const [isBtnEnable, setIsBtnEnable] = useState(false);
+  const [isBtnEnable, setIsBtnEnable] = useState<boolean>(false);
 
   useEffect(() => {
     setIsBtnEnable(newId.length < 8 || newId.length > 20);
@@ -22,7 +17,9 @@ const SignUpId = ({ newId, setNewId, handleSignupStep }: SignUpIdProps) => {
       <Input
         placeholder="아이디를 입력해주세요(8~20자 대소문자/숫자만 가능)"
         value={newId}
-        onChange={(e) => setNewId(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          setNewId(e.target.value)
+        }
       />
       {isBtnEnable && newId && (
         <ErrorMessage message="8~20자 대소문자/숫자만 가능합니다." />

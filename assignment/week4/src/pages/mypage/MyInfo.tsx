@@ -7,8 +7,8 @@ import Button from "../../components/styled/Button";
 import axios from "axios";
 
 const MyInfo = () => {
-  const [newNickname, setNewNickname] = useState("");
-  const [isBtnEnable, setIsBtnEnable] = useState(false);
+  const [newNickname, setNewNickname] = useState<string>("");
+  const [isBtnEnable, setIsBtnEnable] = useState<boolean>(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -18,6 +18,10 @@ const MyInfo = () => {
   const patchNickname = async () => {
     try {
       const userId = localStorage.getItem("userId");
+      if (!userId) {
+        alert("사용자 정보를 찾을 수 없습니다.");
+        return;
+      }
       const res = await axios.patch(
         `${import.meta.env.VITE_API_BASE_URL}/api/v1/users`,
         {
@@ -47,9 +51,11 @@ const MyInfo = () => {
         <Input
           placeholder="새 닉네임을 입력하세요"
           value={newNickname}
-          onChange={(e) => setNewNickname(e.target.value)}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setNewNickname(e.target.value)
+          }
         />
-        <Button disabled={isBtnEnable} onClick={() => patchNickname()}>
+        <Button disabled={isBtnEnable} onClick={patchNickname}>
           변경사항 저장
         </Button>
       </Container>

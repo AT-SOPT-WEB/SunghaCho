@@ -26,15 +26,21 @@ const linkstyle = css`
   text-decoration: none;
 `;
 
+interface UserResponse {
+  data: {
+    nickname: string;
+  };
+}
+
 const Header = () => {
-  const [myNickname, setMyNickname] = useState();
+  const [myNickname, setMyNickname] = useState<string | undefined>(undefined);
 
   useEffect(() => {
     const userId = localStorage.getItem("userId");
 
     const getMyNickname = async () => {
       try {
-        const res = await axios.get(
+        const res = await axios.get<UserResponse>(
           `${import.meta.env.VITE_API_BASE_URL}/api/v1/users/me`,
           {
             headers: {

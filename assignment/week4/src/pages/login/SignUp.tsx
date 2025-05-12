@@ -15,9 +15,9 @@ const linkstyle = css`
 const SignUp = () => {
   type SignUpStep = "signupid" | "signuppwd" | "signupname";
   const [signupStep, setSignupStep] = useState<SignUpStep>("signupid");
-  const [newId, setNewId] = useState("");
-  const [newPwd, setNewPwd] = useState("");
-  const [nickname, setNickname] = useState("");
+  const [newId, setNewId] = useState<string>("");
+  const [newPwd, setNewPwd] = useState<string>("");
+  const [nickname, setNickname] = useState<string>("");
   const navigate = useNavigate();
 
   const postSignUp = async () => {
@@ -42,21 +42,21 @@ const SignUp = () => {
   return (
     <Container>
       <h1>회원가입</h1>
-      {signupStep == "signupid" && (
+      {signupStep === "signupid" && (
         <SignUpId
           newId={newId}
           setNewId={setNewId}
           handleSignupStep={setSignupStep}
         />
       )}
-      {signupStep == "signuppwd" && (
+      {signupStep === "signuppwd" && (
         <SignUpPwd
           newPwd={newPwd}
           setNewPwd={setNewPwd}
           handleSignupStep={setSignupStep}
         />
       )}
-      {signupStep == "signupname" && (
+      {signupStep === "signupname" && (
         <SignUpName
           nickname={nickname}
           setNickname={setNickname}

@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import type { ContainerProps } from "@/types/styled";
 
 const StyledDiv = styled.div`
   display: flex;
@@ -7,10 +8,6 @@ const StyledDiv = styled.div`
   align-items: center;
   height: 80vh;
 `;
-
-type ContainerProps = {
-  children: React.ReactNode;
-};
 
 const Container = ({ children }: ContainerProps) => {
   return <StyledDiv>{children}</StyledDiv>;
