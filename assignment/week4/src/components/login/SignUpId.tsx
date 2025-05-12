@@ -1,5 +1,6 @@
 import Button from "../styled/Button";
 import Input from "../styled/Input";
+import ErrorMessage from "../styled/ErrorMessage";
 import { useState, useEffect } from "react";
 
 type SignUpIdProps = {
@@ -23,6 +24,9 @@ const SignUpId = ({ newId, setNewId, handleSignupStep }: SignUpIdProps) => {
         value={newId}
         onChange={(e) => setNewId(e.target.value)}
       />
+      {isBtnEnable && newId && (
+        <ErrorMessage message="8~20자 대소문자/숫자만 가능합니다." />
+      )}
       <Button
         onClick={() => handleSignupStep("signuppwd")}
         disabled={isBtnEnable}

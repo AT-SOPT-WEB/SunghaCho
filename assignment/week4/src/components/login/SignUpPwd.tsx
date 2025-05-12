@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Button from "../styled/Button";
 import Input from "../styled/Input";
+import ErrorMessage from "../styled/ErrorMessage";
 
 type SignUpPwdProps = {
   newPwd: string;
@@ -11,9 +12,29 @@ type SignUpPwdProps = {
 const SignUpPwd = ({ newPwd, setNewPwd, handleSignupStep }: SignUpPwdProps) => {
   const [checkPwd, setCheckPwd] = useState("");
   const [isBtnEnable, setIsBtnEnable] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
   useEffect(() => {
-    setIsBtnEnable(newPwd == "" || checkPwd == "" || newPwd != checkPwd);
+    if (newPwd.length > 20) {
+      setIsBtnEnable(true);
+      setErrorMsg("최대 길이는 20자 이하로 입력해주세요.");
+      return;
+    }
+
+    if (!newPwd || !checkPwd) {
+      setIsBtnEnable(true);
+      setErrorMsg("");
+      return;
+    }
+
+    if (newPwd !== checkPwd) {
+      setIsBtnEnable(true);
+      setErrorMsg("비밀번호가 일치하지 않습니다.");
+      return;
+    }
+
+    setIsBtnEnable(false);
+    setErrorMsg("");
   }, [newPwd, checkPwd]);
 
   return (
@@ -29,6 +50,7 @@ const SignUpPwd = ({ newPwd, setNewPwd, handleSignupStep }: SignUpPwdProps) => {
         value={checkPwd}
         onChange={(e) => setCheckPwd(e.target.value)}
       />
+      <ErrorMessage message={errorMsg} />
       <Button
         onClick={() => handleSignupStep("signupname")}
         disabled={isBtnEnable}
