@@ -33,7 +33,8 @@ const SignUp = () => {
         password: newPwd,
         nickname: nickname,
       });
-      alert(`${res.nickname}님, 회원 가입을 축하드립니다!`);
+      console.log(res);
+      alert(`${nickname}님, 회원 가입을 축하드립니다!`);
       navigate("/signin");
     } catch (error) {
       console.error("회원가입 실패", error);

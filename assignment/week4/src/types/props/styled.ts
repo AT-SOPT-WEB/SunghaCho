@@ -13,6 +13,7 @@ export type ErrorMessageProps = {
 };
 
 export type InputProps = {
+  type?: "text" | "password";
   placeholder: string;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;

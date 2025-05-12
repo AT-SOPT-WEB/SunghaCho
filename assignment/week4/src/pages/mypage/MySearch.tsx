@@ -34,13 +34,9 @@ const MySearch = () => {
           onChange={(e) => setSearchVal(e.target.value)}
         />
         <Button onClick={getSearch}>조회</Button>
-        {nicknameList.length > 0 ? (
-          nicknameList.map((nickname, index) => (
-            <List key={index}>{nickname}</List>
-          ))
-        ) : (
-          <List>검색 결과가 없습니다.</List>
-        )}
+        {nicknameList.map((nickname, index) => (
+          <List key={index}>{nickname}</List>
+        ))}
       </Container>
     </>
   );

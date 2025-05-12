@@ -37,6 +37,7 @@ const SignUpPwd = ({ newPwd, setNewPwd, handleSignupStep }: SignUpPwdProps) => {
     <>
       <Subtitle>비밀번호</Subtitle>
       <Input
+        type="password"
         placeholder="비밀번호를 입력해주세요"
         value={newPwd}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
