@@ -1,16 +1,42 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router";
 import Header from "../../components/mypage/Header";
 import Container from "../../components/styled/Container";
 import Input from "../../components/styled/Input";
 import Button from "../../components/styled/Button";
+import axios from "axios";
 
 const MyInfo = () => {
   const [newNickname, setNewNickname] = useState("");
   const [isBtnEnable, setIsBtnEnable] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsBtnEnable(!newNickname);
   }, [newNickname]);
+
+  const patchNickname = async () => {
+    try {
+      const userId = localStorage.getItem("userId");
+      const res = await axios.patch(
+        `${import.meta.env.VITE_API_BASE_URL}/api/v1/users`,
+        {
+          nickname: newNickname,
+        },
+        {
+          headers: {
+            userId,
+          },
+        }
+      );
+      console.log(res.data);
+      alert("닉네임 변경이 완료되었습니다.");
+      navigate(0);
+    } catch (error) {
+      console.error("닉네임 수정 실패", error);
+      alert("닉네임 변경 실패. 다시 시도해주세요!");
+    }
+  };
 
   return (
     <>
@@ -23,7 +49,9 @@ const MyInfo = () => {
           value={newNickname}
           onChange={(e) => setNewNickname(e.target.value)}
         />
-        <Button disabled={isBtnEnable}>변경사항 저장</Button>
+        <Button disabled={isBtnEnable} onClick={() => patchNickname()}>
+          변경사항 저장
+        </Button>
       </Container>
     </>
   );
