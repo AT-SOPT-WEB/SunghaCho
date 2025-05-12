@@ -10,11 +10,11 @@ import { patchNickname } from "../../api/users";
 
 const MyInfo = () => {
   const [newNickname, setNewNickname] = useState<string>("");
-  const [isBtnEnable, setIsBtnEnable] = useState<boolean>(false);
+  const [isBtnDisable, setIsBtnDisable] = useState<boolean>(true);
   const navigate = useNavigate();
 
   useEffect(() => {
-    setIsBtnEnable(!newNickname);
+    setIsBtnDisable(!newNickname);
   }, [newNickname]);
 
   const handlePatchNickname = async () => {
@@ -46,7 +46,7 @@ const MyInfo = () => {
             setNewNickname(e.target.value)
           }
         />
-        <Button disabled={isBtnEnable} onClick={handlePatchNickname}>
+        <Button disabled={isBtnDisable} onClick={handlePatchNickname}>
           변경사항 저장
         </Button>
       </Container>

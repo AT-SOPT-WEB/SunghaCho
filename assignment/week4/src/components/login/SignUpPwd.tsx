@@ -7,29 +7,29 @@ import type { SignUpPwdProps } from "@/types/props/auth";
 
 const SignUpPwd = ({ newPwd, setNewPwd, handleSignupStep }: SignUpPwdProps) => {
   const [checkPwd, setCheckPwd] = useState<string>("");
-  const [isBtnEnable, setIsBtnEnable] = useState<boolean>(false);
+  const [isBtnDisable, setIsBtnDisable] = useState<boolean>(true);
   const [errorMsg, setErrorMsg] = useState<string>("");
 
   useEffect(() => {
     if (newPwd.length > 20) {
-      setIsBtnEnable(true);
+      setIsBtnDisable(true);
       setErrorMsg("최대 길이는 20자 이하로 입력해주세요.");
       return;
     }
 
     if (!newPwd || !checkPwd) {
-      setIsBtnEnable(true);
+      setIsBtnDisable(true);
       setErrorMsg("");
       return;
     }
 
     if (newPwd !== checkPwd) {
-      setIsBtnEnable(true);
+      setIsBtnDisable(true);
       setErrorMsg("비밀번호가 일치하지 않습니다.");
       return;
     }
 
-    setIsBtnEnable(false);
+    setIsBtnDisable(false);
     setErrorMsg("");
   }, [newPwd, checkPwd]);
 
@@ -53,7 +53,7 @@ const SignUpPwd = ({ newPwd, setNewPwd, handleSignupStep }: SignUpPwdProps) => {
       <ErrorMessage message={errorMsg} />
       <Button
         onClick={() => handleSignupStep("signupname")}
-        disabled={isBtnEnable}
+        disabled={isBtnDisable}
       >
         다음
       </Button>

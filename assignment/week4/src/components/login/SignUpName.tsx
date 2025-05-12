@@ -9,10 +9,10 @@ const SignUpName = ({
   setNickname,
   handleSignupStep,
 }: SignUpNameProps) => {
-  const [isBtnEnable, setIsBtnEnable] = useState<boolean>(false);
+  const [isBtnDisable, setIsBtnDisable] = useState<boolean>(true);
 
   useEffect(() => {
-    setIsBtnEnable(!nickname);
+    setIsBtnDisable(!nickname);
   }, [nickname]);
 
   return (
@@ -25,7 +25,7 @@ const SignUpName = ({
           setNickname(e.target.value)
         }
       />
-      <Button disabled={isBtnEnable} onClick={handleSignupStep}>
+      <Button disabled={isBtnDisable} onClick={handleSignupStep}>
         회원가입 하기
       </Button>
     </>

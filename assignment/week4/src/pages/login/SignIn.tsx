@@ -16,11 +16,11 @@ const linkstyle = css`
 const SignIn = () => {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
-  const [isBtnEnable, setIsBtnEnable] = useState(false);
+  const [isBtnDisable, setIsBtnDisable] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
-    setIsBtnEnable(!(id && password));
+    setIsBtnDisable(!(id && password));
   }, [id, password]);
 
   const handleSignIn = async () => {
@@ -48,7 +48,7 @@ const SignIn = () => {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <Button disabled={isBtnEnable} onClick={handleSignIn}>
+      <Button disabled={isBtnDisable} onClick={handleSignIn}>
         로그인
       </Button>
       <Link to="/signup" css={linkstyle}>

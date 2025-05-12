@@ -6,10 +6,10 @@ import { useState, useEffect } from "react";
 import type { SignUpIdProps } from "@/types/props/auth";
 
 const SignUpId = ({ newId, setNewId, handleSignupStep }: SignUpIdProps) => {
-  const [isBtnEnable, setIsBtnEnable] = useState<boolean>(false);
+  const [isBtnDisable, setIsBtnDisable] = useState<boolean>(true);
 
   useEffect(() => {
-    setIsBtnEnable(newId.length < 8 || newId.length > 20);
+    setIsBtnDisable(newId.length < 8 || newId.length > 20);
   }, [newId]);
 
   return (
@@ -22,12 +22,12 @@ const SignUpId = ({ newId, setNewId, handleSignupStep }: SignUpIdProps) => {
           setNewId(e.target.value)
         }
       />
-      {isBtnEnable && newId && (
+      {isBtnDisable && newId && (
         <ErrorMessage message="8~20자 대소문자/숫자만 가능합니다." />
       )}
       <Button
         onClick={() => handleSignupStep("signuppwd")}
-        disabled={isBtnEnable}
+        disabled={isBtnDisable}
       >
         다음
       </Button>
