@@ -1,6 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { Link } from "react-router";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 const wrapper = css`
   display: flex;
@@ -25,6 +27,31 @@ const linkstyle = css`
 `;
 
 const Header = () => {
+  const [myNickname, setMyNickname] = useState();
+
+  useEffect(() => {
+    const userId = localStorage.getItem("userId");
+
+    const getMyNickname = async () => {
+      try {
+        const res = await axios.get(
+          `${import.meta.env.VITE_API_BASE_URL}/api/v1/users/me`,
+          {
+            headers: {
+              userId,
+            },
+          }
+        );
+        console.log(res.data);
+        setMyNickname(res.data.data.nickname);
+      } catch (error) {
+        console.error("내 닉네임 조회 실패", error);
+      }
+    };
+
+    getMyNickname();
+  }, []);
+
   return (
     <div css={wrapper}>
       <div css={tabBox}>
@@ -34,11 +61,17 @@ const Header = () => {
         <Link to="/mypage/search" css={linkstyle}>
           회원 조회
         </Link>
-        <Link to="/signin" css={linkstyle}>
+        <Link
+          to="/signin"
+          onClick={() => {
+            localStorage.removeItem("userId");
+          }}
+          css={linkstyle}
+        >
           로그아웃
         </Link>
       </div>
-      <p>닉네임</p>
+      <p>{myNickname}</p>
     </div>
   );
 };

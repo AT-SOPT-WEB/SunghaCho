@@ -31,6 +31,8 @@ const SignIn = () => {
         }
       );
       console.log(res.data);
+      const userId = res.data.data.userId;
+      localStorage.setItem("userId", userId);
       navigate("/mypage/info");
     } catch (error) {
       console.error("로그인 실패", error);
