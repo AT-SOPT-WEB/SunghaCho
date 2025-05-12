@@ -2,7 +2,7 @@ import Button from "../styled/Button";
 import Input from "../styled/Input";
 import ErrorMessage from "../styled/ErrorMessage";
 import { useState, useEffect } from "react";
-import type { SignUpIdProps } from "@/types/auth";
+import type { SignUpIdProps } from "@/types/props/auth";
 
 const SignUpId = ({ newId, setNewId, handleSignupStep }: SignUpIdProps) => {
   const [isBtnEnable, setIsBtnEnable] = useState<boolean>(false);

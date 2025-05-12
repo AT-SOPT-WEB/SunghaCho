@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Button from "../styled/Button";
 import Input from "../styled/Input";
-import type { SignUpNameProps } from "@/types/auth";
+import type { SignUpNameProps } from "@/types/props/auth";
 
 const SignUpName = ({
   nickname,

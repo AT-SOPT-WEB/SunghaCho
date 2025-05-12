@@ -2,7 +2,7 @@
 import { css } from "@emotion/react";
 import { Link } from "react-router";
 import { useState, useEffect } from "react";
-import axios from "axios";
+import { getMyNickname } from "../../api/users";
 
 const wrapper = css`
   display: flex;
@@ -26,36 +26,24 @@ const linkstyle = css`
   text-decoration: none;
 `;
 
-interface UserResponse {
-  data: {
-    nickname: string;
-  };
-}
-
 const Header = () => {
   const [myNickname, setMyNickname] = useState<string | undefined>(undefined);
 
   useEffect(() => {
     const userId = localStorage.getItem("userId");
 
-    const getMyNickname = async () => {
-      try {
-        const res = await axios.get<UserResponse>(
-          `${import.meta.env.VITE_API_BASE_URL}/api/v1/users/me`,
-          {
-            headers: {
-              userId,
-            },
-          }
-        );
-        console.log(res.data);
-        setMyNickname(res.data.data.nickname);
-      } catch (error) {
-        console.error("내 닉네임 조회 실패", error);
+    const fetchNickname = async () => {
+      if (userId) {
+        try {
+          const data = await getMyNickname(userId);
+          setMyNickname(data.data.nickname);
+        } catch (error) {
+          console.error("닉네임 조회 실패", error);
+        }
       }
     };
 
-    getMyNickname();
+    fetchNickname();
   }, []);
 
   return (

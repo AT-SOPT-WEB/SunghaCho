@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Button from "../styled/Button";
 import Input from "../styled/Input";
 import ErrorMessage from "../styled/ErrorMessage";
-import type { SignUpPwdProps } from "@/types/auth";
+import type { SignUpPwdProps } from "@/types/props/auth";
 
 const SignUpPwd = ({ newPwd, setNewPwd, handleSignupStep }: SignUpPwdProps) => {
   const [checkPwd, setCheckPwd] = useState<string>("");

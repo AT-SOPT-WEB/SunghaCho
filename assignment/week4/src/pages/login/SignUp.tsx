@@ -2,11 +2,11 @@
 import { css } from "@emotion/react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
-import axios from "axios";
 import Container from "../../components/styled/Container";
 import SignUpId from "../../components/login/SignUpId";
 import SignUpPwd from "../../components/login/SignUpPwd";
 import SignUpName from "../../components/login/SignUpName";
+import { postSignUp } from "../../api/auth";
 
 const linkstyle = css`
   color: black;
@@ -15,26 +15,22 @@ const linkstyle = css`
 const SignUp = () => {
   type SignUpStep = "signupid" | "signuppwd" | "signupname";
   const [signupStep, setSignupStep] = useState<SignUpStep>("signupid");
-  const [newId, setNewId] = useState<string>("");
-  const [newPwd, setNewPwd] = useState<string>("");
-  const [nickname, setNickname] = useState<string>("");
+  const [newId, setNewId] = useState("");
+  const [newPwd, setNewPwd] = useState("");
+  const [nickname, setNickname] = useState("");
   const navigate = useNavigate();
 
-  const postSignUp = async () => {
+  const handleSignUp = async () => {
     try {
-      const res = await axios.post(
-        `${import.meta.env.VITE_API_BASE_URL}/api/v1/auth/signup`,
-        {
-          loginId: newId,
-          password: newPwd,
-          nickname: nickname,
-        }
-      );
-      console.log(res.data);
-      alert(`${res.data.nickname}님, 회원 가입을 축하드립니다!`);
+      const res = await postSignUp({
+        loginId: newId,
+        password: newPwd,
+        nickname: nickname,
+      });
+      alert(`${res.nickname}님, 회원 가입을 축하드립니다!`);
       navigate("/signin");
     } catch (error) {
-      console.error("아이디 중복 확인에 실패했습니다.", error);
+      console.error("회원가입 실패", error);
       alert("회원가입 실패");
     }
   };
@@ -60,7 +56,7 @@ const SignUp = () => {
         <SignUpName
           nickname={nickname}
           setNickname={setNickname}
-          handleSignupStep={postSignUp}
+          handleSignupStep={handleSignUp}
         />
       )}
       <p>이미 회원이신가요?</p>

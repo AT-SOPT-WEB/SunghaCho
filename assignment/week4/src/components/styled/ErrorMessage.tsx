@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import type { ErrorMessageProps } from "@/types/styled";
+import type { ErrorMessageProps } from "@/types/props/styled";
 
 const StyledP = styled.div`
   width: 28rem;

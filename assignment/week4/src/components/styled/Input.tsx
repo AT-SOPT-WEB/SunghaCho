@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import type { InputProps } from "@/types/styled";
+import type { InputProps } from "@/types/props/styled";
 
 const StyledInput = styled.input`
   display: block;

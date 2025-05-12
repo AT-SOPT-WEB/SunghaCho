@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import type { ButtonProps } from "@/types/styled";
+import type { ButtonProps } from "@/types/props/styled";
 
 const StyledButton = styled.button`
   display: block;

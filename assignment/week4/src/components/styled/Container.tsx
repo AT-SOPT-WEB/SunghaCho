@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import type { ContainerProps } from "@/types/styled";
+import type { ContainerProps } from "@/types/props/styled";
 
 const StyledDiv = styled.div`
   display: flex;
