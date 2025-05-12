@@ -4,9 +4,9 @@ import type { ContainerProps } from "@/types/props/styled";
 const StyledDiv = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  margin-top: 15rem;
   align-items: center;
-  height: 80vh;
+  height: 60vh;
 `;
 
 const Container = ({ children }: ContainerProps) => {

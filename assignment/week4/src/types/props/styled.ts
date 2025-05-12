@@ -21,3 +21,7 @@ export type InputProps = {
 export type TitleProps = {
   children: React.ReactNode;
 };
+
+export type ListProps = {
+  children: React.ReactNode;
+};
