@@ -44,7 +44,7 @@ export const patchNickname = async (
   }
 };
 
-export const searchUsers = async (
+export const getSearchUsers = async (
   keyword: string
 ): Promise<NicknameListResponse> => {
   try {

@@ -3,7 +3,7 @@ import Header from "../../components/mypage/Header";
 import Container from "../../components/styled/Container";
 import Input from "../../components/styled/Input";
 import Button from "../../components/styled/Button";
-import { searchUsers } from "../../api/users";
+import { getSearchUsers } from "../../api/users";
 import type { NicknameListResponse } from "@/types/api/users";
 
 const MySearch = () => {
@@ -12,7 +12,7 @@ const MySearch = () => {
 
   const getSearch = async () => {
     try {
-      const res: NicknameListResponse = await searchUsers(searchVal);
+      const res: NicknameListResponse = await getSearchUsers(searchVal);
       setNicknameList(res.data.nicknameList);
     } catch (error) {
       console.error("검색 실패", error);
