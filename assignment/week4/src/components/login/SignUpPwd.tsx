@@ -14,7 +14,6 @@ const divStyle = css`
   display: flex;
   align-items: center;
   width: 30rem;
-  border: 1px solid blue;
 `;
 
 const showPwdStyle = css`
