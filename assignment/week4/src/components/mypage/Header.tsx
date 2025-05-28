@@ -3,8 +3,14 @@ import { css } from "@emotion/react";
 import { Link } from "react-router";
 import { useState, useEffect } from "react";
 import { getMyNickname } from "../../api/users";
+import menuIcon from "../../assets/menuIcon.svg"
+import closeIcon from "../../assets/closeIcon.svg"
+import MenuBar from "./MenuBar";
+
 
 const wrapper = css`
+  position: fixed;
+  top: 0;
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -26,8 +32,18 @@ const linkstyle = css`
   text-decoration: none;
 `;
 
+const iconstyle = css`
+  width : 18px;
+  cursor: pointer;
+`;
+
 const Header = () => {
   const [myNickname, setMyNickname] = useState<string | undefined>(undefined);
+  const [isMenuOpen, setIsMeuOpen] = useState<boolean>(false);
+
+  const handleMenuClick = () => {
+    setIsMeuOpen(!isMenuOpen)
+  }
 
   useEffect(() => {
     const userId = localStorage.getItem("userId");
@@ -47,8 +63,12 @@ const Header = () => {
   }, []);
 
   return (
+    <>
     <div css={wrapper}>
       <div css={tabBox}>
+        { isMenuOpen ? 
+        <img src={closeIcon} css={iconstyle} onClick={() => handleMenuClick()}/> :
+        <img src={menuIcon} css={iconstyle} onClick={() => handleMenuClick()}/>}
         <Link to="/mypage/info" css={linkstyle}>
           내 정보
         </Link>
@@ -66,7 +86,9 @@ const Header = () => {
         </Link>
       </div>
       <p>{myNickname}</p>
+      { isMenuOpen && <MenuBar/>}
     </div>
+    </>
   );
 };
 
