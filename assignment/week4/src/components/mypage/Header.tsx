@@ -18,7 +18,7 @@ const wrapper = css`
   height: 5rem;
   align-items: center;
   padding: 0 2rem;
-  font-size: 18px;
+  font-size: 1.125rem;
   background-color: black;
   color: white;
 `;
