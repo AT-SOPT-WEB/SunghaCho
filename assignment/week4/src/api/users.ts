@@ -1,4 +1,4 @@
-import axios from "axios";
+import { instance } from "./instance";
 import type {
   UserResponse,
   PatchNicknameRequest,
@@ -9,8 +9,8 @@ export const getMyNickname = async (
   userId: string | null
 ): Promise<UserResponse> => {
   try {
-    const response = await axios.get<UserResponse>(
-      `${import.meta.env.VITE_API_BASE_URL}/api/v1/users/me`,
+    const response = await instance.get<UserResponse>(
+      "/api/v1/users/me",
       {
         headers: {
           userId,
@@ -29,8 +29,8 @@ export const patchNickname = async (
   data: PatchNicknameRequest
 ): Promise<void> => {
   try {
-    await axios.patch(
-      `${import.meta.env.VITE_API_BASE_URL}/api/v1/users`,
+    await instance.patch(
+      "/api/v1/users",
       data,
       {
         headers: {
@@ -48,8 +48,8 @@ export const getSearchUsers = async (
   keyword: string
 ): Promise<NicknameListResponse> => {
   try {
-    const response = await axios.get<NicknameListResponse>(
-      `${import.meta.env.VITE_API_BASE_URL}/api/v1/users?keyword=${keyword}`
+    const response = await instance.get<NicknameListResponse>(
+      `/api/v1/users?keyword=${keyword}`
     );
     return response.data;
   } catch (error) {

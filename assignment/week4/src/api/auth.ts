@@ -1,4 +1,4 @@
-import axios from "axios";
+import { instance } from "./instance";
 import type {
   SignInRequest,
   SignInResponse,
@@ -9,8 +9,8 @@ import type {
 export const postSignIn = async (
   data: SignInRequest
 ): Promise<SignInResponse> => {
-  const response = await axios.post<SignInResponse>(
-    `${import.meta.env.VITE_API_BASE_URL}/api/v1/auth/signin`,
+  const response = await instance.post<SignInResponse>(
+    "/api/v1/auth/signin",
     data
   );
   return response.data;
@@ -19,8 +19,8 @@ export const postSignIn = async (
 export const postSignUp = async (
   data: SignUpRequest
 ): Promise<SignUpResponse> => {
-  const response = await axios.post<SignUpResponse>(
-    `${import.meta.env.VITE_API_BASE_URL}/api/v1/auth/signup`,
+  const response = await instance.post<SignUpResponse>(
+    "/api/v1/auth/signup",
     data
   );
   return response.data;
