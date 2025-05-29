@@ -60,7 +60,7 @@ const Header = () => {
   const [isMenuOpen, setIsMeuOpen] = useState<boolean>(false);
 
   const handleMenuClick = () => {
-    setIsMeuOpen(!isMenuOpen)
+    setIsMeuOpen(prev => !prev)
   }
 
   useEffect(() => {
