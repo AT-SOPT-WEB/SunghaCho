@@ -5,11 +5,14 @@ import Subtitle from "../styled/Subtitle";
 import { useState, useEffect } from "react";
 import type { SignUpIdProps } from "@/types/props/auth";
 
+const MIN_ID_LENGTH = 8
+const MAX_ID_LENGTH = 20;
+
 const SignUpId = ({ newId, setNewId, handleSignupStep }: SignUpIdProps) => {
   const [isBtnDisable, setIsBtnDisable] = useState<boolean>(true);
 
   useEffect(() => {
-    setIsBtnDisable(newId.length < 8 || newId.length > 20);
+    setIsBtnDisable(newId.length < MIN_ID_LENGTH || newId.length > MAX_ID_LENGTH);
   }, [newId]);
 
   return (
