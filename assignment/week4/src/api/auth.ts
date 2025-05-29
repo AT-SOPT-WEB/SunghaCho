@@ -9,19 +9,19 @@ import type {
 export const postSignIn = async (
   data: SignInRequest
 ): Promise<SignInResponse> => {
-  const response = await instance.post<SignInResponse>(
+  const { data: responseData } = await instance.post<SignInResponse>(
     "/api/v1/auth/signin",
     data
   );
-  return response.data;
+  return responseData;
 };
 
 export const postSignUp = async (
   data: SignUpRequest
 ): Promise<SignUpResponse> => {
-  const response = await instance.post<SignUpResponse>(
+  const { data: responseData } = await instance.post<SignUpResponse>(
     "/api/v1/auth/signup",
     data
   );
-  return response.data;
+  return responseData;
 };

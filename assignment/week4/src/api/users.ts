@@ -9,7 +9,7 @@ export const getMyNickname = async (
   userId: string | null
 ): Promise<UserResponse> => {
   try {
-    const response = await instance.get<UserResponse>(
+    const { data } = await instance.get<UserResponse>(
       "/api/v1/users/me",
       {
         headers: {
@@ -17,7 +17,7 @@ export const getMyNickname = async (
         },
       }
     );
-    return response.data;
+    return data;
   } catch (error) {
     console.error("내 닉네임 조회 실패", error);
     throw error;
@@ -48,10 +48,10 @@ export const getSearchUsers = async (
   keyword: string
 ): Promise<NicknameListResponse> => {
   try {
-    const response = await instance.get<NicknameListResponse>(
+    const { data } = await instance.get<NicknameListResponse>(
       `/api/v1/users?keyword=${keyword}`
     );
-    return response.data;
+    return data;
   } catch (error) {
     console.error("검색 실패", error);
     throw error;
