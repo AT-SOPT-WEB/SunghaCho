@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { Link } from "react-router";
+import { motion } from "framer-motion";
 
 const wrapper = css`
   position: fixed;
@@ -21,12 +22,45 @@ const wrapper = css`
 const linkstyle = css`
   color: white;
   text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;
+
+const menuVariants = {
+  hidden: {
+    y: "-10%",
+    opacity: 0,
+  },
+  visible: {
+    y: "0%",
+    opacity: 1,
+    transition: {
+      duration: 0.3,
+      ease: "easeInOut",
+    },
+  },
+  exit: {
+    y: "-10%",
+    opacity: 0,
+    transition: {
+      duration: 0.3,
+      ease: "easeInOut",
+    },
+  },
+};
 
 const MenuBar = () => {
 
   return (
-    <div css={wrapper}>
+    <motion.div
+      css={wrapper}
+      variants={menuVariants}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+    >
         <Link to="/mypage/info" css={linkstyle}>
           내 정보
         </Link>
@@ -42,7 +76,7 @@ const MenuBar = () => {
         >
           로그아웃
         </Link>
-    </div>
+    </motion.div>
   );
 };
 

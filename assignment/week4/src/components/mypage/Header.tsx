@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { Link } from "react-router";
+import { AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { getMyNickname } from "../../api/users";
 import menuIcon from "../../assets/menuIcon.svg"
@@ -43,6 +44,10 @@ const tabBox = css`
 const linkstyle = css`
   color: white;
   text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 const iconstyle = css`
@@ -100,7 +105,9 @@ const Header = () => {
         </Link>
       </div>
       <p>{myNickname}</p>
-      { isMenuOpen && <MenuBar/>}
+      <AnimatePresence>
+        {isMenuOpen && <MenuBar />}
+      </AnimatePresence>
     </div>
     </>
   );
