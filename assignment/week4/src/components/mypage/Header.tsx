@@ -16,15 +16,28 @@ const wrapper = css`
   width: 100%;
   height: 5rem;
   align-items: center;
-  padding: 0 3rem;
+  padding: 0 2rem;
   font-size: 18px;
   background-color: black;
   color: white;
 `;
 
+const menuBox = css`
+  display: flex;
+  gap: 2rem;
+
+    @media (min-width: 768px) {
+    display: none;
+  }
+`;
+
 const tabBox = css`
   display: flex;
   gap: 2rem;
+
+    @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const linkstyle = css`
@@ -65,10 +78,11 @@ const Header = () => {
   return (
     <>
     <div css={wrapper}>
-      <div css={tabBox}>
-        { isMenuOpen ? 
+      <div css={menuBox}>
+              { isMenuOpen ? 
         <img src={closeIcon} css={iconstyle} onClick={() => handleMenuClick()}/> :
-        <img src={menuIcon} css={iconstyle} onClick={() => handleMenuClick()}/>}
+        <img src={menuIcon} css={iconstyle} onClick={() => handleMenuClick()}/>}</div>
+      <div css={tabBox}>
         <Link to="/mypage/info" css={linkstyle}>
           내 정보
         </Link>

@@ -9,7 +9,7 @@ const wrapper = css`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width : 20rem;
+  width : 100%;
   height: 12rem;
   padding : 1rem 0;
   align-items: center;
