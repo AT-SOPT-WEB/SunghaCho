@@ -2,6 +2,7 @@
 import { css } from "@emotion/react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
+import { ROUTES } from "../../router/routesPath"
 import Container from "../../components/styled/Container";
 import Title from "../../components/styled/Title";
 import SignUpId from "../../components/login/SignUpId";
@@ -35,7 +36,7 @@ const SignUp = () => {
       });
       console.log(res);
       alert(`${nickname}님, 회원 가입을 축하드립니다!`);
-      navigate("/signin");
+      navigate(ROUTES.SIGN_IN);
     } catch (error) {
       console.error("회원가입 실패", error);
       alert("회원가입 실패");
@@ -68,7 +69,7 @@ const SignUp = () => {
       )}
       <div css={divstyle}>
         <p>이미 회원이신가요?</p>
-        <Link to="/signin" css={linkstyle}>
+        <Link to={ROUTES.SIGN_IN} css={linkstyle}>
           로그인
         </Link>
       </div>

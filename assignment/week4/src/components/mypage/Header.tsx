@@ -3,6 +3,7 @@ import { css } from "@emotion/react";
 import { Link } from "react-router";
 import { AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
+import { ROUTES } from "../../router/routesPath"
 import { getMyNickname } from "../../api/users";
 import menuIcon from "../../assets/menuIcon.svg"
 import closeIcon from "../../assets/closeIcon.svg"
@@ -88,14 +89,14 @@ const Header = () => {
         <img src={closeIcon} css={iconstyle} onClick={() => handleMenuClick()}/> :
         <img src={menuIcon} css={iconstyle} onClick={() => handleMenuClick()}/>}</div>
       <div css={tabBox}>
-        <Link to="/mypage/info" css={linkstyle}>
+        <Link to={ROUTES.MYPAGE_INFO} css={linkstyle}>
           내 정보
         </Link>
-        <Link to="/mypage/search" css={linkstyle}>
+        <Link to={ROUTES.MYPAGE_SEARCH} css={linkstyle}>
           회원 조회
         </Link>
         <Link
-          to="/signin"
+          to={ROUTES.SIGN_IN}
           onClick={() => {
             localStorage.removeItem("userId");
           }}

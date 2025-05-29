@@ -2,6 +2,7 @@
 import { css } from "@emotion/react";
 import { Link } from "react-router";
 import { motion } from "framer-motion";
+import { ROUTES } from "../../router/routesPath"
 
 const wrapper = css`
   position: fixed;
@@ -61,14 +62,14 @@ const MenuBar = () => {
       animate="visible"
       exit="exit"
     >
-        <Link to="/mypage/info" css={linkstyle}>
+        <Link to={ROUTES.MYPAGE_INFO} css={linkstyle}>
           내 정보
         </Link>
-        <Link to="/mypage/search" css={linkstyle}>
+        <Link to={ROUTES.MYPAGE_SEARCH} css={linkstyle}>
           회원 조회
         </Link>
         <Link
-          to="/signin"
+          to={ROUTES.SIGN_IN}
           onClick={() => {
             localStorage.removeItem("userId");
           }}

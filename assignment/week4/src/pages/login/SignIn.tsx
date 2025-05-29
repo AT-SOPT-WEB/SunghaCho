@@ -7,6 +7,7 @@ import Input from "../../components/styled/Input";
 import Button from "../../components/styled/Button";
 import Title from "../../components/styled/Title";
 import { postSignIn } from "../../api/auth";
+import { ROUTES } from "../../router/routesPath"
 
 const linkstyle = css`
   color: black;
@@ -28,7 +29,7 @@ const SignIn = () => {
       const data = await postSignIn({ loginId: id, password });
       const userId = data.data.userId;
       localStorage.setItem("userId", userId);
-      navigate("/mypage/info");
+      navigate(ROUTES.MYPAGE_INFO);
     } catch (error) {
       console.error("로그인 실패", error);
       alert("로그인 실패");
@@ -51,7 +52,7 @@ const SignIn = () => {
       <Button disabled={isBtnDisable} onClick={handleSignIn}>
         로그인
       </Button>
-      <Link to="/signup" css={linkstyle}>
+      <Link to={ROUTES.SIGN_UP} css={linkstyle}>
         회원가입
       </Link>
     </Container>
