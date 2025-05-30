@@ -29,12 +29,11 @@ const SignUp = () => {
 
   const handleSignUp = async () => {
     try {
-      const res = await postSignUp({
+      await postSignUp({
         loginId: newId,
         password: newPwd,
         nickname: nickname,
       });
-      console.log(res);
       alert(`${nickname}님, 회원 가입을 축하드립니다!`);
       navigate(ROUTES.SIGN_IN);
     } catch (error) {
