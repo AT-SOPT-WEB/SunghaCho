@@ -57,7 +57,7 @@ const iconstyle = css`
 `;
 
 const Header = () => {
-  const [myNickname, setMyNickname] = useState<string | undefined>(undefined);
+  const [myNickname, setMyNickname] = useState<string | null>(null);
   const [isMenuOpen, setIsMeuOpen] = useState<boolean>(false);
 
   const handleMenuClick = () => {
