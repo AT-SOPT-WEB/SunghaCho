@@ -13,7 +13,7 @@ const StyledInput = styled.input`
   color: #000000;
 `;
 
-const Button = ({ type, placeholder, value, onChange }: InputProps) => {
+const Input = ({ type, placeholder, value, onChange }: InputProps) => {
   return (
     <StyledInput
       type={type}
@@ -24,4 +24,4 @@ const Button = ({ type, placeholder, value, onChange }: InputProps) => {
   );
 };
 
-export default Button;
+export default Input;
