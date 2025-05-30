@@ -13,13 +13,14 @@ const StyledInput = styled.input`
   color: #000000;
 `;
 
-const Input = ({ type, placeholder, value, onChange }: InputProps) => {
+const Input = ({ type, placeholder, value, onChange, ...props }: InputProps) => {
   return (
     <StyledInput
       type={type}
       placeholder={placeholder}
       value={value}
       onChange={onChange}
+      {...props}
     />
   );
 };
