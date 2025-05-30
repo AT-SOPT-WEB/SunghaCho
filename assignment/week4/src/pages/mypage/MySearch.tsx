@@ -10,7 +10,7 @@ import { getSearchUsers } from "../../api/users";
 import type { NicknameListResponse } from "@/types/api/users";
 
 const MySearch = () => {
-  const [searchVal, setSearchVal] = useState<string>("");
+  const [searchVal, setSearchVal] = useState("");
   const [nicknameList, setNicknameList] = useState<string[]>([]);
 
   const getSearch = async () => {
