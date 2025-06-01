@@ -1,9 +1,9 @@
 import { createBrowserRouter, Navigate } from "react-router";
 import { ROUTES } from "./routesPath"
-import SignIn from "../pages/login/SignIn";
-import SignUp from "../pages/login/SignUp";
-import MyInfo from "../pages/mypage/MyInfo";
-import MySearch from "../pages/mypage/MySearch";
+import SignIn from "@pages/login/SignIn";
+import SignUp from "@pages/login/SignUp";
+import MyInfo from "@pages/mypage/MyInfo";
+import MySearch from "@pages/mypage/MySearch";
 
 const router = createBrowserRouter([
   {

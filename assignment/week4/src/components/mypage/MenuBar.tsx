@@ -2,7 +2,7 @@
 import { css } from "@emotion/react";
 import { Link } from "react-router";
 import { motion } from "framer-motion";
-import { ROUTES } from "../../router/routesPath"
+import { ROUTES } from "@router/routesPath"
 
 const wrapper = css`
   position: fixed;

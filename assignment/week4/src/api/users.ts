@@ -3,7 +3,7 @@ import type {
   UserResponse,
   PatchNicknameRequest,
   NicknameListResponse,
-} from "@/types/api/users";
+} from "types/api/users";
 
 export const getMyNickname = async (
   userId: string | null

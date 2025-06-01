@@ -2,13 +2,13 @@
 import { css } from "@emotion/react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
-import { ROUTES } from "../../router/routesPath"
-import Container from "../../components/styled/Container";
-import Title from "../../components/styled/Title";
-import SignUpId from "../../components/login/SignUpId";
-import SignUpPwd from "../../components/login/SignUpPwd";
-import SignUpName from "../../components/login/SignUpName";
-import { postSignUp } from "../../api/auth";
+import { ROUTES } from "@router/routesPath"
+import Container from "@components/styled/Container";
+import Title from "@components/styled/Title";
+import SignUpId from "@components/login/SignUpId";
+import SignUpPwd from "@components/login/SignUpPwd";
+import SignUpName from "@components/login/SignUpName";
+import { postSignUp } from "@api/auth";
 
 const divstyle = css`
   display: flex;

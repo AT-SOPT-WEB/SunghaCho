@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, type SetStateAction } from "react";
 import { Link, useNavigate } from "react-router";
 import Container from "../../components/styled/Container";
 import Input from "../../components/styled/Input";
@@ -42,12 +42,12 @@ const SignIn = () => {
       <Input
         placeholder="아이디"
         value={id}
-        onChange={(e) => setId(e.target.value)}
+        onChange={(e: { target: { value: SetStateAction<string>; }; }) => setId(e.target.value)}
       />
       <Input
         placeholder="비밀번호"
         value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        onChange={(e: { target: { value: SetStateAction<string>; }; }) => setPassword(e.target.value)}
       />
       <Button disabled={isBtnDisable} onClick={handleSignIn}>
         로그인

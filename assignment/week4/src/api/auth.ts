@@ -4,7 +4,7 @@ import type {
   SignInResponse,
   SignUpRequest,
   SignUpResponse,
-} from "@/types/api/auth";
+} from "types/api/auth";
 
 export const postSignIn = async (
   data: SignInRequest

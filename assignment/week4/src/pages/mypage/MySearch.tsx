@@ -1,13 +1,13 @@
-import { useState } from "react";
-import Header from "../../components/mypage/Header";
-import Container from "../../components/styled/Container";
-import Input from "../../components/styled/Input";
-import Button from "../../components/styled/Button";
-import Title from "../../components/styled/Title";
-import Subtitle from "../../components/styled/Subtitle";
-import List from "../../components/styled/List";
-import { getSearchUsers } from "../../api/users";
-import type { NicknameListResponse } from "@/types/api/users";
+import { useState, type SetStateAction } from "react";
+import Header from "@components/mypage/Header";
+import Container from "@components/styled/Container";
+import Input from "@components/styled/Input";
+import Button from "@components/styled/Button";
+import Title from "@components/styled/Title";
+import Subtitle from "@components/styled/Subtitle";
+import List from "@components/styled/List";
+import { getSearchUsers } from "@api/users";
+import type { NicknameListResponse } from "types/api/users";
 
 const MySearch = () => {
   const [searchVal, setSearchVal] = useState("");
@@ -31,7 +31,7 @@ const MySearch = () => {
         <Input
           placeholder="검색할 닉네임을 입력하세요"
           value={searchVal}
-          onChange={(e) => setSearchVal(e.target.value)}
+          onChange={(e: { target: { value: SetStateAction<string>; }; }) => setSearchVal(e.target.value)}
         />
         <Button onClick={getSearch}>조회</Button>
         {nicknameList.map((nickname, index) => (

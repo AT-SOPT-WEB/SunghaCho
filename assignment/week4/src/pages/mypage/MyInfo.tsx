@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import Header from "../../components/mypage/Header";
-import Container from "../../components/styled/Container";
-import Input from "../../components/styled/Input";
-import Button from "../../components/styled/Button";
-import Title from "../../components/styled/Title";
-import Subtitle from "../../components/styled/Subtitle";
-import { patchNickname } from "../../api/users";
+import Header from "@components/mypage/Header";
+import Container from "@components/styled/Container";
+import Input from "@components/styled/Input";
+import Button from "@components/styled/Button";
+import Title from "@components/styled/Title";
+import Subtitle from "@components/styled/Subtitle";
+import { patchNickname } from "@api/users";
 
 const MyInfo = () => {
   const [newNickname, setNewNickname] = useState<string>("");
