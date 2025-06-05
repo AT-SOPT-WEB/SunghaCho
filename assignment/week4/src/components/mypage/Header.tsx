@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { Link, useNavigate } from "react-router";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "motion/react";
 import { useState, useEffect } from "react";
 import { ROUTES } from "../../router/routesPath"
 import { getMyNickname } from "../../api/users";
@@ -59,10 +59,10 @@ const iconstyle = css`
 
 const Header = () => {
   const [myNickname, setMyNickname] = useState<string | null>(null);
-  const [isMenuOpen, setIsMeuOpen] = useState<boolean>(false);
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
   const handleMenuClick = () => {
-    setIsMeuOpen(prev => !prev)
+    setIsMenuOpen(prev => !prev)
   }
 
   useEffect(() => {
