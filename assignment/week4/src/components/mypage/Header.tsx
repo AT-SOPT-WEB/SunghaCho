@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { ROUTES } from "../../router/routesPath"
@@ -45,6 +45,7 @@ const tabBox = css`
 const linkstyle = css`
   color: white;
   text-decoration: none;
+  cursor: pointer;
 
   &:hover {
     text-decoration: underline;
@@ -81,6 +82,13 @@ const Header = () => {
     fetchNickname();
   }, []);
 
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("userId");
+    navigate(ROUTES.SIGN_IN);
+  };
+
   return (
     <>
     <div css={wrapper}>
@@ -95,15 +103,11 @@ const Header = () => {
         <Link to={ROUTES.MYPAGE_SEARCH} css={linkstyle}>
           회원 조회
         </Link>
-        <Link
-          to={ROUTES.SIGN_IN}
-          onClick={() => {
-            localStorage.removeItem("userId");
-          }}
+        <div onClick={handleLogout}
           css={linkstyle}
         >
           로그아웃
-        </Link>
+        </div>
       </div>
       <p>{myNickname}</p>
       <AnimatePresence>
